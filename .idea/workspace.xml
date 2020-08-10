@@ -1,11 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="464b3f28-21d8-4d01-abdf-8e90e34e7f74" name="Default Changelist" comment="" />
+    <list default="true" id="464b3f28-21d8-4d01-abdf-8e90e34e7f74" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/controllerUsers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/databases/database.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/User.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -14,6 +52,9 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectId" id="1fjTb0gRTSAqpGuLUfAyFbalOMQ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -27,7 +68,25 @@
     <property name="last_opened_file_path" value="$USER_HOME$/.var/app/com.jetbrains.WebStorm/config/JetBrains/WebStorm2020.1/node/node-v12.13.1-linux-x64/bin/node" />
     <property name="nodejs_interpreter_path" value="$USER_HOME$/.var/app/com.jetbrains.WebStorm/config/JetBrains/WebStorm2020.1/node/node-v12.13.1-linux-x64/bin/node" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -37,17 +96,64 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1596730569205</updated>
-      <workItem from="1596730570257" duration="37000" />
+      <workItem from="1596730570257" duration="99000" />
+      <workItem from="1597088765016" duration="6418000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="187" y="31" width="992" height="737" key="SettingsEditor" timestamp="1596730608847">
+    <state x="141" y="34" width="1084" height="734" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597091277030">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="187" y="31" width="992" height="737" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1596730608847" />
+    <state x="141" y="34" width="1084" height="734" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1366.741@0.27.1366.741" timestamp="1597091277030" />
+    <state x="555" y="297" width="255" height="207" key="Github.ShareDialog" timestamp="1596730626688">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="555" y="297" width="255" height="207" key="Github.ShareDialog/0.27.1366.741@0.27.1366.741" timestamp="1596730626688" />
+    <state x="432" y="88" width="491" height="625" key="Github.UntrackedFilesDialog" timestamp="1596730635997">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="432" y="88" width="491" height="625" key="Github.UntrackedFilesDialog/0.27.1366.741@0.27.1366.741" timestamp="1596730635997" />
+    <state width="1345" height="263" key="GridCell.Tab.0.bottom" timestamp="1597094058562">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1345" height="263" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1597094058562" />
+    <state width="1345" height="263" key="GridCell.Tab.0.center" timestamp="1597094058558">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1345" height="263" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1597094058558" />
+    <state width="1345" height="263" key="GridCell.Tab.0.left" timestamp="1597094058556">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1345" height="263" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1597094058556" />
+    <state width="1345" height="263" key="GridCell.Tab.0.right" timestamp="1597094058560">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1345" height="263" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1597094058560" />
+    <state x="187" y="31" width="992" height="737" key="SettingsEditor" timestamp="1597089403046">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="187" y="31" width="992" height="737" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1597089403046" />
+    <state x="4" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1597091082216">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="4" y="89" width="672" height="678" key="search.everywhere.popup/0.27.1366.741@0.27.1366.741" timestamp="1597091082216" />
   </component>
 </project>
