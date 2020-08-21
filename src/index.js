@@ -16,6 +16,7 @@ app.use(bodyparser.json())
 app.use(cors({origin:true}))
 app.use('/api/signupuser',require('./routes/routerUser'))
 app.use('/api/signupworker',require('./routes/routerWorker'))
+app.use('/api/main',require('./routes/routerMain'))
 
 //start server
 app.listen( 5000,()=>{

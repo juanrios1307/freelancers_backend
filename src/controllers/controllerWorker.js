@@ -33,14 +33,15 @@ ControllerWorker.obtener = (req,res) =>{
 
             // También podemos devolver así la información:
             res.status(200).json({ status: "ok", data: workers });
-        })
+        }).populate('user');
     }
 }
 
 ControllerWorker.crear= async (req,res)=>{
-    const {correo,pwd,nombre,apellido,telefono,profesion,yearsXperience,titulo,experiencia,imagen} =req.body //atributos
+    const {_id,correo,pwd,nombre,apellido,telefono,profesion,yearsXperience,titulo,experiencia,imagen} =req.body //atributos
 
     const user=new User({
+        _id,
         isWorker:true,
         correo,
         pwd,
@@ -54,33 +55,16 @@ ControllerWorker.crear= async (req,res)=>{
         mensaje:"Worker guardado"
     })*/
 
-
-    User.find({"correo":correo},{"_id":1} ,async function (err,user){
-        if (err) {
-            // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-            res.status(404).json({ status: "error", data: "No se ha encontrado el usuario "});
-        } else {
-            // También podemos devolver así la información:
-            const id=user.toString().substring(6,)
-                .replace("{","")
-                .replace("}","")
-                .replace(" ","")
-
-            console.log(id)
-
-
-            const worker=new Worker({
-                userID:id,
-                profesion,
-                yearsXperience,
-                experiencia,
-                titulo,
-                imagen
-            })
-            await worker.save()
-            res.status(200).json({ status: "ok", data: "Worker guardado"});
-        }
+    const worker=new Worker({
+        user: user._id,
+        profesion,
+        yearsXperience,
+        experiencia,
+        titulo,
+        imagen
     })
+    await worker.save()
+    res.status(200).json({ status: "ok", data: "Worker guardado"});
 }
 
 
