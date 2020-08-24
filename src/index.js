@@ -19,8 +19,7 @@ app.use('/api/signupworker',require('./routes/routerWorker'))
 app.use('/api/main',require('./routes/routerMain'))
 
 //start server
-app.listen( 5000,()=>{
-    console.log('Listen in the port ',5000)
-
+app.listen(process.env.PORT || 5000,()=>{
+    console.log('Listen in the port ',process.env.PORT)
 })
 
