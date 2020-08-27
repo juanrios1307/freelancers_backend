@@ -14,8 +14,8 @@ app.use(bodyparser.json())
 
 //Rutas
 app.use(cors({origin:true}))
-app.use('/api/signupuser',require('./routes/routerUser'))
-app.use('/api/signupworker',require('./routes/routerWorker'))
+app.use('/api/signupuser',require('./routes/routerSignUpUser'))
+app.use('/api/signupworker',require('./routes/routerSignUpWorker'))
 app.use('/api/main',require('./routes/routerMain'))
 
 //start server

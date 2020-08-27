@@ -10,7 +10,10 @@ ControllerMain.obtener = (req,res) =>{
             return (res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
 
         // También podemos devolver así la información:
-        res.status(200).json({ status: "ok", data: workers });
+        res.status(200).json({
+            status: "ok",
+            data: workers
+        });
     });
 }
 
