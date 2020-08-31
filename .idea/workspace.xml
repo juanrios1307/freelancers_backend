@@ -20,26 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="464b3f28-21d8-4d01-abdf-8e90e34e7f74" name="Default Changelist" comment="a">
-      <change afterPath="$PROJECT_DIR$/src/controllers/controllerAdminUser.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/controllerAdminWorker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/controllerAnuncesWork.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/controllerChat.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/controllerContact.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/controllerFilters.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/controllerLogin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/controllerRate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/AnuncesWorks.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/ContactMessage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/routerAdminUser.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/routerAdminWorker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/routerAnuncesWork.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/routerChat.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/routerContact.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/routerFilters.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/routerLogin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/routerRate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/controllerAdminUser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/controllerAdminWorker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/controllerSignUpUsers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/controllerCrudUsers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/controllerSignUpWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/controllerCrudWorker.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/routerAdminUser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/routerAdminWorker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/routerSignUpUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/routerCrudUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/routerSignUpWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/routerCrudWorker.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +117,8 @@
       <workItem from="1598460668607" duration="2910000" />
       <workItem from="1598530965245" duration="3393000" />
       <workItem from="1598659685802" duration="60000" />
-      <workItem from="1598819396866" duration="994000" />
+      <workItem from="1598819396866" duration="1188000" />
+      <workItem from="1598885147883" duration="965000" />
     </task>
     <task id="LOCAL-00001" summary="user">
       <created>1597096932724</created>
@@ -178,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598545552697</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="routers controllers">
+      <created>1598820711365</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1598820711365</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,7 +200,8 @@
     <MESSAGE value="a" />
     <MESSAGE value="access" />
     <MESSAGE value="change names" />
-    <option name="LAST_COMMIT_MESSAGE" value="change names" />
+    <MESSAGE value="routers controllers" />
+    <option name="LAST_COMMIT_MESSAGE" value="routers controllers" />
   </component>
   <component name="WindowStateProjectService">
     <state x="141" y="34" width="1084" height="734" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597097336802">
@@ -247,12 +246,12 @@
     </state>
     <state x="187" y="31" width="992" height="737" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1597160376879" />
     <state x="249" y="31" width="1022" height="737" key="SettingsEditor/72.27.1294.741@72.27.1294.741" timestamp="1598039981630" />
-    <state x="335" y="135" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1598545571802">
+    <state x="335" y="135" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1598820721257">
       <screen x="72" y="29" width="1294" height="739" />
     </state>
     <state x="278" y="133" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1366.741@0.27.1366.741" timestamp="1597096950482" />
     <state x="335" y="133" width="800" height="535" key="Vcs.Push.Dialog.v2/72.27.1294.741@72.27.1294.741" timestamp="1598391405753" />
-    <state x="335" y="135" key="Vcs.Push.Dialog.v2/72.29.1294.739@72.29.1294.739" timestamp="1598545571802" />
+    <state x="335" y="135" width="800" height="535" key="Vcs.Push.Dialog.v2/72.29.1294.739@72.29.1294.739" timestamp="1598820721257" />
     <state x="500" y="313" width="427" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598545584436">
       <screen x="72" y="29" width="1294" height="739" />
     </state>

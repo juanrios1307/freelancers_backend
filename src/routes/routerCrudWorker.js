@@ -1,6 +1,6 @@
 const  {Router} =require('express')
 const route=Router()
-const controllerWorker=require('../controllers/controllerSignUpWorker')
+const controllerWorker=require('../controllers/controllerCrudWorker')
 
 
 route.all('/', function(req, res, next) {

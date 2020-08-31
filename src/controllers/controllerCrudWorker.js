@@ -1,9 +1,9 @@
-const ControllerSignUpWorker={}
+const ControllerWorker={}
 const User=require('../models/User')
 const Worker=require('../models/Worker')
-const ControllerUser =require('./controllerSignUpUsers')
+const ControllerUser =require('./controllerCrudUsers')
 
-ControllerSignUpWorker.obtener = (req, res) =>{
+ControllerWorker.obtener = (req, res) =>{
 
     if (req.params.id) {
         Worker.findById(req.params.id, function (err, worker) {
@@ -37,7 +37,7 @@ ControllerSignUpWorker.obtener = (req, res) =>{
     }
 }
 
-ControllerSignUpWorker.crear= async (req, res)=>{
+ControllerWorker.crear= async (req, res)=>{
     const {_id,correo,pwd,nombre,apellido,telefono,profesion,yearsXperience,titulo,experiencia,imagen} =req.body //atributos
 
     const user=new User({
@@ -68,7 +68,7 @@ ControllerSignUpWorker.crear= async (req, res)=>{
 }
 
 
-ControllerSignUpWorker.actualizar=(req, res)=>{
+ControllerWorker.actualizar=(req, res)=>{
 
     Worker.findByIdAndUpdate(req.params.id, { $set: req.body }, function (err) {
         if (err)
@@ -85,7 +85,7 @@ ControllerSignUpWorker.actualizar=(req, res)=>{
     });
 }
 
-ControllerSignUpWorker.eliminar=(req, res)=>{
+ControllerWorker.eliminar=(req, res)=>{
 
 
     Worker.findByIdAndRemove(req.params.id, function(err, data) {
@@ -103,4 +103,4 @@ ControllerSignUpWorker.eliminar=(req, res)=>{
 }
 
 
-module.exports=ControllerSignUpWorker
+module.exports=ControllerWorker

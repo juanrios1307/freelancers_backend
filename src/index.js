@@ -14,17 +14,17 @@ app.use(bodyparser.json())
 
 //Rutas
 app.use(cors({origin:true}))
-app.use('/api/adminuser',require('./routes/routerAdminUser'))
-app.use('/api/adminworker',require('./routes/routerAdminWorker'))
+
 app.use('/api/anunceswork',require('./routes/routerAnuncesWork'))
 app.use('/api/chat',require('./routes/routerChat'))
 app.use('/api/contact',require('./routes/routerContact'))
+app.use('/api/signupuser',require('./routes/routerCrudUser'))
+app.use('/api/signupworker',require('./routes/routerCrudWorker'))
 app.use('/api/filters',require('./routes/routerFilters'))
 app.use('/api/login',require('./routes/routerLogin'))
 app.use('/api/main',require('./routes/routerMain'))
 app.use('/api/rate',require('./routes/routerRate'))
-app.use('/api/signupuser',require('./routes/routerSignUpUser'))
-app.use('/api/signupworker',require('./routes/routerSignUpWorker'))
+
 
 
 
