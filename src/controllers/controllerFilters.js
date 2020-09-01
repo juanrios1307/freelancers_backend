@@ -1,8 +1,8 @@
-const ControllerMain={}
+const ControllerFilters={}
 const User=require('../models/User')
 const Worker=require('../models/Worker')
 
-ControllerMain.obtenerProfesion = (req,res) =>{
+ControllerFilters.obtenerProfesion = (req,res) =>{
 
     const profesion= req.body
 
@@ -20,7 +20,7 @@ ControllerMain.obtenerProfesion = (req,res) =>{
     });
 }
 
-ControllerMain.obtenerYearsExperience= (req,res) =>{
+ControllerFilters.obtenerYearsExperience= (req,res) =>{
 
     const years= req.body
 
@@ -38,7 +38,7 @@ ControllerMain.obtenerYearsExperience= (req,res) =>{
     });
 }
 
-ControllerMain.obtenerTitulo= (req,res) =>{
+ControllerFilters.obtenerTitulo= (req,res) =>{
 
     const need= req.body
 
@@ -57,4 +57,4 @@ ControllerMain.obtenerTitulo= (req,res) =>{
 }
 
 //Se exporta controlador
-module.exports=ControllerMain
+module.exports=ControllerFilters

@@ -4,12 +4,13 @@ var Schema=mongoose.Schema;
 // Usaremos los esquemas
 
 // Creamos el objeto del esquema y sus atributos
-const ContactMessage = mongoose.model('contactMessage',{
-    date:  {type:String, required:true},
+const Message = mongoose.model('Message',{
+    user: { type: Schema.ObjectId, ref: 'users' },
+    worker: { type: Schema.ObjectId, ref: 'workers' },
     mensaje:  {type:String, required:true},
-    worker: { type: Schema.ObjectId, ref: 'workers'},
-    user:  { type: Schema.ObjectId, ref: 'users'}
+    fecha: {type:String, required:true},
+    direccion:  {type:String, required:true}
 })
 
 // Exportamos el modelo para usarlo en otros ficheros
-module.exports = ContactMessage
+module.exports = Message
