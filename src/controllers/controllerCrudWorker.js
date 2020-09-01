@@ -1,10 +1,10 @@
 const ControllerWorker={}
 const User=require('../models/User')
 const Worker=require('../models/Worker')
-const ControllerUser =require('./controllerCrudUsers')
+
 
 ControllerWorker.obtener = (req, res) =>{
-
+    //si se envia la peticion con parametros
     if (req.params.id) {
         Worker.findById(req.params.id, function (err, worker) {
             if (err) {
@@ -24,8 +24,9 @@ ControllerWorker.obtener = (req, res) =>{
 
             }
         })
-    } else {
-        // Ayuda: https://mongoosejs.com/docs/api/model.html
+
+    } else { //Si se envia la petion sin parametros
+        // se buscan todos los Workers
         Worker.find({}, function (err, workers) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
@@ -38,10 +39,12 @@ ControllerWorker.obtener = (req, res) =>{
 }
 
 ControllerWorker.crear= async (req, res)=>{
-    const {_id,correo,pwd,nombre,apellido,telefono,profesion,yearsXperience,titulo,experiencia,imagen} =req.body //atributos
 
+    //Se inicializan datos a guardar
+    const {correo,pwd,nombre,apellido,telefono,profesion,yearsXperience,titulo,experiencia,imagen} =req.body //atributos
+
+    //Se crea modelo de usuario y se sube a DB
     const user=new User({
-        _id,
         isWorker:true,
         correo,
         pwd,
@@ -51,10 +54,7 @@ ControllerWorker.crear= async (req, res)=>{
     })
     await  user.save()
 
-  /*  res.json({
-        mensaje:"Worker guardado"
-    })*/
-
+    //Se crea modelo de trabajador y se sube a DB
     const worker=new Worker({
         user: user._id,
         profesion,
@@ -64,6 +64,7 @@ ControllerWorker.crear= async (req, res)=>{
         imagen
     })
     await worker.save()
+    //Se envia respuesta
     res.status(200).json({ status: "ok", data: "Worker guardado"});
 }
 
@@ -102,5 +103,5 @@ ControllerWorker.eliminar=(req, res)=>{
     });
 }
 
-
+//Se exporta controlador
 module.exports=ControllerWorker

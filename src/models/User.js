@@ -1,5 +1,6 @@
 // Cargamos el módulo de mongoose
 const mongoose =  require('mongoose');
+
 // Usaremos los esquemas
 
 // Creamos el objeto del esquema y sus atributos

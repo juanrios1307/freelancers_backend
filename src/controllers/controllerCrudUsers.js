@@ -28,10 +28,9 @@ ControllerUser.obtener = (req,res) =>{
 }
 
 ControllerUser.crear= async (req,res)=>{
-    const {_id,correo,pwd,nombre,apellido,telefono,} =req.body //atributos
+    const {correo,pwd,nombre,apellido,telefono} =req.body //atributos
 
     const registro=new User({
-        _id,
         isWorker:false,
         correo,
         pwd,

@@ -3,7 +3,7 @@ const Worker=require('../models/Worker')
 
 ControllerMain.obtener = (req,res) =>{
 
-    // Ayuda: https://mongoosejs.com/docs/api/model.html
+    // Se buscan todas las profesiones
     Worker.find({},{"profesion":1 ,"_id":0}, function (err, workers) {
         if (err)
             // Si se ha producido un error, salimos de la función devolviendo  código http 422
