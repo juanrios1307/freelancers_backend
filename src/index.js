@@ -16,11 +16,12 @@ app.use(morgan('dev'))
 app.use(bodyparser.urlencoded({extend:true}))
 app.use(bodyparser.json())
 
-//Rutas
+
 app.use(cors({origin:true}))
 app.use(jwt());
 app.use(errorHandler);
 
+//Declaracion de rutas para manejo de api
 app.use('/api/anunceswork',require('./routes/routerAnuncesWork'))
 app.use('/api/chat',require('./routes/routerChat'))
 app.use('/api/contact',require('./routes/routerContact'))
