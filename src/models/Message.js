@@ -8,7 +8,7 @@ const Message = mongoose.model('Message',{
     user: { type: Schema.ObjectId, ref: 'users' },
     worker: { type: Schema.ObjectId, ref: 'workers' },
     mensaje:  {type:String, required:true},
-    fecha: {type:String, required:true},
+    date: { type: Date, default: Date.now },
     direccion:  {type:String, required:true}
 })
 

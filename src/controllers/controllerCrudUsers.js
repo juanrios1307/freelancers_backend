@@ -1,4 +1,5 @@
 const ControllerUser={}
+const bcrypt = require('bcryptjs');
 const User=require('../models/User')
 
 ControllerUser.obtener = (req,res) =>{
@@ -28,7 +29,15 @@ ControllerUser.obtener = (req,res) =>{
 }
 
 ControllerUser.crear= async (req,res)=>{
-    const {correo,pwd,nombre,apellido,telefono} =req.body //atributos
+    var {correo,pwd,nombre,apellido,telefono} =req.body //atributos
+
+    if (await User.findOne({ email: correo })) {
+        throw 'El correo "' + correo + '" esta en uso';
+    }
+
+    if (pwd) {
+        pwd= bcrypt.hashSync(pwd, 10);
+    }
 
     const registro=new User({
         isWorker:false,
@@ -38,6 +47,7 @@ ControllerUser.crear= async (req,res)=>{
         apellido,
         telefono
     })
+
     await  registro.save()
 
     res.json({

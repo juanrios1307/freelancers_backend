@@ -3,8 +3,12 @@ const app=express()
 const morgan=require('morgan')
 const cors= require('cors')
 const bodyparser=require('body-parser')
+const jwt = require('./helpers/jwt');
+const errorHandler = require('./helpers/errorHandler');
 
-require('./databases/database')
+
+
+require('./helpers/database')
 
 app.set('Port',5000)
 
@@ -14,6 +18,8 @@ app.use(bodyparser.json())
 
 //Rutas
 app.use(cors({origin:true}))
+app.use(jwt());
+app.use(errorHandler);
 
 app.use('/api/anunceswork',require('./routes/routerAnuncesWork'))
 app.use('/api/chat',require('./routes/routerChat'))

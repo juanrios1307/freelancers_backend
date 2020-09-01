@@ -5,7 +5,7 @@ var Schema=mongoose.Schema;
 
 // Creamos el objeto del esquema y sus atributos
 const ContactMessage = mongoose.model('contactMessage',{
-    date:  {type:String, required:true},
+    date:  { type: Date, default: Date.now },
     mensaje:  {type:String, required:true},
     worker: { type: Schema.ObjectId, ref: 'workers'},
     user:  { type: Schema.ObjectId, ref: 'users'}

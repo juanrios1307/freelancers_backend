@@ -9,7 +9,7 @@ const Comment = mongoose.model('comments',{
     worker: { type: Schema.ObjectId, ref: 'workers' },
     comment: {type:String, required:true},
     rating:  {type:String, required:true},
-    fecha: {type:String, required:true}
+    date: { type: Date, default: Date.now }
 })
 
 // Exportamos el modelo para usarlo en otros ficheros

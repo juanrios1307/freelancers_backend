@@ -11,4 +11,6 @@ route.all('/', function(req, res, next) {
     next()
 });
 
+route.post('/',controlLogin.authenticate)
+
 module.exports =route
