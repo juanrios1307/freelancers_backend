@@ -20,7 +20,9 @@
     "mongoose-dbref": "0.0.4",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "express-jwt": "^6.0.0",
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "config.json": "0.0.4",
