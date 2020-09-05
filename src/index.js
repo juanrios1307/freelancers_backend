@@ -33,8 +33,6 @@ app.use('/api/main',require('./routes/routerMain'))
 app.use('/api/rate',require('./routes/routerRate'))
 
 
-
-
 //start server
 app.listen(process.env.PORT || 5000,()=>{
     console.log('Listen in the port ',process.env.PORT)

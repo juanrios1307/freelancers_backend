@@ -12,7 +12,8 @@ function jwt() {
             '/api/users',
             '/api/workers',
             '/api/login',
-            '/api/main'
+            '/api/main',
+            'api/filters'
 
         ]
     });

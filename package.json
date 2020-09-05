@@ -23,10 +23,5 @@
     "nodemon": "^2.0.4",
     "express-jwt": "^6.0.0",
     "jsonwebtoken": "^8.5.1"
-  },
-  "devDependencies": {
-    "config.json": "0.0.4",
-    "express-jwt": "^6.0.0",
-    "jsonwebtoken": "^8.5.1"
   }
 }
