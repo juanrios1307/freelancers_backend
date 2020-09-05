@@ -12,10 +12,8 @@ ControllerLogin.authenticate= async (req,res)=> {
     if (user && bcrypt.compareSync(pwd, user.pwd)) {
         const token = jwt.sign({sub: user.id}, config.secret, {expiresIn: '7d'});
 
-        res.json( {
-            ...user.toJSON(),
-            token
-        });
+        res.cookie('token', token, { httpOnly: true });
+        res.json({ token });
     }
 }
 
