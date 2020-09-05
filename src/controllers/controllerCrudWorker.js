@@ -1,4 +1,5 @@
 const ControllerWorker={}
+const bcrypt = require('bcryptjs');
 const User=require('../models/User')
 const Worker=require('../models/Worker')
 
@@ -41,7 +42,15 @@ ControllerWorker.obtener = (req, res) =>{
 ControllerWorker.crear= async (req, res)=>{
 
     //Se inicializan datos a guardar
-    const {correo,pwd,nombre,apellido,telefono,profesion,yearsXperience,titulo,experiencia,imagen} =req.body //atributos
+    var {correo,pwd,nombre,apellido,telefono,profesion,yearsXperience,titulo,experiencia,imagen} =req.body //atributos
+
+    if (await User.findOne({ email: correo })) {
+        throw 'El correo "' + correo + '" esta en uso';
+    }
+
+    if (pwd) {
+        pwd= bcrypt.hashSync(pwd, 10);
+    }
 
     //Se crea modelo de usuario y se sube a DB
     const user=new User({
