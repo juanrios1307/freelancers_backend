@@ -13,7 +13,7 @@ function jwt() {
             '/api/workers',
             '/api/login',
             '/api/main',
-            'api/filters'
+            '/api/filters'
 
         ]
     });

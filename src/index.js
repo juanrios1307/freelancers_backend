@@ -5,7 +5,7 @@ const cors= require('cors')
 const bodyparser=require('body-parser')
 const jwt = require('./helpers/jwt');
 const errorHandler = require('./helpers/errorHandler');
-
+const cookieParser = require('cookie-parser');
 
 
 require('./helpers/database')
@@ -15,7 +15,7 @@ app.set('Port',5000)
 app.use(morgan('dev'))
 app.use(bodyparser.urlencoded({extend:true}))
 app.use(bodyparser.json())
-
+app.use(cookieParser())
 
 app.use(cors({origin:true}))
 app.use(jwt());
