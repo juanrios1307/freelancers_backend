@@ -8,7 +8,6 @@ const User = mongoose.model('users',{
     correo: {type:String, required:true, unique:true},
     pwd:  {type:String, required:true},
     nombre: {type:String, required:true},
-    apellido:  {type:String, required:true},
     telefono:  {type:String, required:true, unique: false},
     isWorker: {type:Boolean},
 

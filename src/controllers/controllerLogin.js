@@ -13,7 +13,10 @@ ControllerLogin.authenticate= async (req,res)=> {
         const token = jwt.sign({sub: user.id}, config.secret, {expiresIn: '7d'});
 
         res.cookie('token', token, { httpOnly: true });
-        res.json({ token });
+        res.json({
+            data:token ,
+            mensaje:"Sesion Iniciada"
+        });
     }
 }
 

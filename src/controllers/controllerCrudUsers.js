@@ -29,7 +29,7 @@ ControllerUser.obtener = (req,res) =>{
 }
 
 ControllerUser.crear= async (req,res)=>{
-    var {correo,pwd,nombre,apellido,telefono} =req.body //atributos
+    var {nombre,correo,pwd,telefono} =req.body //atributos
 
     if (await User.findOne({ email: correo })) {
         throw 'El correo "' + correo + '" esta en uso';
@@ -44,7 +44,6 @@ ControllerUser.crear= async (req,res)=>{
         correo,
         pwd,
         nombre,
-        apellido,
         telefono
     })
 
