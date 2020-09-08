@@ -14,7 +14,6 @@ function jwt() {
             '/api/login',
             '/api/main',
             '/api/filters'
-
         ]
     });
 }
