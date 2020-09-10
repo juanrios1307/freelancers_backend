@@ -15,11 +15,10 @@ app.set('Port',5000)
 app.use(morgan('dev'))
 app.use(bodyparser.urlencoded({extend:true}))
 app.use(bodyparser.json())
-app.use(cookieParser())
-
 app.use(cors({origin:true}))
-app.use(jwt());
-app.use(errorHandler);
+
+//app.use(jwt);
+//app.use(errorHandler);
 
 //Declaracion de rutas para manejo de api
 app.use('/api/anunceswork',require('./routes/routerAnuncesWork'))
