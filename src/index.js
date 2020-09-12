@@ -30,6 +30,7 @@ app.use('/api/filters',require('./routes/routerFilters'))
 app.use('/api/login',require('./routes/routerLogin'))
 app.use('/api/main',require('./routes/routerMain'))
 app.use('/api/rate',require('./routes/routerRate'))
+app.use('/api/saving',require('./routes/routerSavePublications'))
 
 
 //start server

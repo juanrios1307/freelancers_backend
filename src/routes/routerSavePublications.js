@@ -1,6 +1,6 @@
 const  {Router} =require('express')
 const route=Router()
-const controllerWorker=require('../controllers/controllerCrudWorker')
+const  controlSave=require('../controllers/controllerSavePublications')
 const protectedRoutes=require('../helpers/protectedRoutes')
 
 route.all('/', function(req, res, next) {
@@ -9,12 +9,18 @@ route.all('/', function(req, res, next) {
     res.header("Access-Control-Allow-Origin","http://localhost:3000/")
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods', "GET, POST, PUT, DELETE, OPTIONS");
+
+    res.header('Content-Type', 'application/json;charset=UTF-8')
+    res.header('Access-Control-Allow-Credentials', true)
+    res.header(  "Access-Control-Allow-Headers", "access-token, Origin, Content-Type, Accept")
+
+
     next()
 });
 
-route.get('/:id?',controllerWorker.obtener)
-route.post('/',protectedRoutes.verifyToken,controllerWorker.crear)
-route.put('/id',protectedRoutes.verifyToken,controllerWorker.actualizar)
-route.delete('/id',protectedRoutes.verifyToken,controllerWorker.eliminar)
+
+route.get('/',protectedRoutes.verifyToken,controlSave.obtener)
+route.put('/',protectedRoutes.verifyToken,controlSave.crear)
+
 
 module.exports =route

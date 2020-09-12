@@ -1,6 +1,7 @@
 const  {Router} =require('express')
 const route=Router()
-const  controlAnunces=require('../controllers/controllerAnuncesWork')
+const  controllerAnunces=require('../controllers/controllerAnuncesWork')
+const protectedRoutes=require('../helpers/protectedRoutes')
 
 route.all('/', function(req, res, next) {
     res.header("Access-Control-Allow-Origin","https://glacial-everglades-42121.herokuapp.com/")
@@ -10,6 +11,11 @@ route.all('/', function(req, res, next) {
     res.header('Access-Control-Allow-Methods', "GET, POST, PUT, DELETE, OPTIONS");
     next()
 });
+
+route.get('/:id?',controllerAnunces.obtener)
+route.post('/',protectedRoutes.verifyToken,controllerAnunces.crear)
+route.put('/id',protectedRoutes.verifyToken,controllerAnunces.actualizar)
+route.delete('/id',protectedRoutes.verifyToken,controllerAnunces.eliminar)
 
 
 module.exports =route

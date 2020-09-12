@@ -31,7 +31,7 @@ ControllerUser.obtener = (req,res) =>{
 ControllerUser.crear= async (req,res)=>{
     var {nombre,correo,pwd,telefono} =req.body //atributos
 
-    if (await User.findOne({ email: correo })) {
+    if (await User.findOne({ correo: correo })) {
         throw 'El correo "' + correo + '" esta en uso';
     }
 
@@ -44,7 +44,8 @@ ControllerUser.crear= async (req,res)=>{
         correo,
         pwd,
         nombre,
-        telefono
+        telefono,
+        Save:[]
     })
 
     await  registro.save()
@@ -59,15 +60,14 @@ ControllerUser.crear= async (req,res)=>{
 
 ControllerUser.actualizar=(req,res)=>{
 
-    User.findByIdAndUpdate(req.params.id, { $set: req.body }, function (err) {
-        if (err)
-        {
+    const user=req.decoded.sub
+
+    User.findByIdAndUpdate(user, { $set: req.body }, function (err) {
+        if (err) {
             //res.send(err);
             // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
-            res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+req.params.id});
-        }
-        else
-        {
+            res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
+        } else {
             // Devolvemos el código HTTP 200.
             res.status(200).json({ status: "ok", data: "Usuario actualizado" });
         }
@@ -75,15 +75,16 @@ ControllerUser.actualizar=(req,res)=>{
 }
 
 ControllerUser.eliminar=(req,res)=>{
-    User.findByIdAndRemove(req.params.id, function(err, data) {
+
+    const user=req.decoded.sub
+
+    User.findByIdAndRemove(user, function(err, data) {
         if (err || !data) {
             //res.send(err);
             // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-            res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+req.params.id});
-        }
-        else
-        {
-            res.status(200).json({ status: "ok", data: "Se ha eliminado correctamente el usuario con id: "+req.params.id});
+            res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
+        } else {
+            res.status(200).json({ status: "ok", data: "Se ha eliminado correctamente el usuario con id: "+user});
 
         }
     });

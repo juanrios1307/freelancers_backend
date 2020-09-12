@@ -8,9 +8,9 @@ const User = mongoose.model('users',{
     correo: {type:String, required:true, unique:true},
     pwd:  {type:String, required:true},
     nombre: {type:String, required:true},
-    telefono:  {type:String, required:true, unique: false},
+    telefono:  {type:String, required:true},
     isWorker: {type:Boolean},
-
+    Save:{type: Array}
 })
 
 // Exportamos el modelo para usarlo en otros ficheros

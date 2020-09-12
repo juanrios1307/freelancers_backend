@@ -20,7 +20,7 @@ route.all('/', function(req, res, next) {
 
 
 route.get('/',protectedRoutes.verifyToken,controlUser.obtener)
-route.post('/',protectedRoutes.verifyToken,controlUser.crear)
+route.post('/:id',protectedRoutes.verifyToken,controlUser.crear)
 
 
 module.exports =route
