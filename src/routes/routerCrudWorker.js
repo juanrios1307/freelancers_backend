@@ -12,9 +12,9 @@ route.all('/', function(req, res, next) {
     next()
 });
 
-route.get('/:id?',controllerWorker.obtener)
+route.get('/',protectedRoutes.verifyToken,controllerWorker.obtener)
 route.post('/',protectedRoutes.verifyToken,controllerWorker.crear)
-route.put('/id',protectedRoutes.verifyToken,controllerWorker.actualizar)
-route.delete('/id',protectedRoutes.verifyToken,controllerWorker.eliminar)
+route.put('/',protectedRoutes.verifyToken,controllerWorker.actualizar)
+route.delete('/',protectedRoutes.verifyToken,controllerWorker.eliminar)
 
 module.exports =route

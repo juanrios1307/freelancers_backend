@@ -1,6 +1,7 @@
 const  {Router} =require('express')
 const route=Router()
 const  controlRate=require('../controllers/controllerRate')
+const protectedRoutes=require('../helpers/protectedRoutes')
 
 route.all('/', function(req, res, next) {
     res.header("Access-Control-Allow-Origin","https://glacial-everglades-42121.herokuapp.com/")
@@ -11,6 +12,7 @@ route.all('/', function(req, res, next) {
     next()
 });
 
-
+route.get('/',protectedRoutes.verifyToken,controlRate.obtener)
+route.post('/:id',protectedRoutes.verifyToken,controlRate.crear)
 
 module.exports =route

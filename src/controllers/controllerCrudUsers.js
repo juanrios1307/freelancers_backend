@@ -4,28 +4,16 @@ const User=require('../models/User')
 
 ControllerUser.obtener = (req,res) =>{
 
-    if (req.params.id)
-    {
-        User.findById(req.params.id, function (err, user) {
-            if (err) {
-                // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-                res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+req.params.id});
-            } else {
-                // También podemos devolver así la información:
-                res.status(200).json({ status: "ok", data: user });
-            }
-        })
-    } else {
-        // Ayuda: https://mongoosejs.com/docs/api/model.html
-        User.find({}, function (err, users) {
-            if (err)
-                // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
-                return (res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
-
+  const user =req.decoded.sub
+    User.findById(user, function (err, user) {
+        if (err) {
+            // Devolvemos el código HTTP 404, de producto no encontrado por su id.
+            res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+req.params.id});
+        } else {
             // También podemos devolver así la información:
-            res.status(200).json({ status: "ok", data: users });
-        })
-    }
+            res.status(200).json({ status: "ok", data: user });
+        }
+    })
 }
 
 ControllerUser.crear= async (req,res)=>{
