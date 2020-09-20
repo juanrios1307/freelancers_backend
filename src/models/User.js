@@ -1,5 +1,6 @@
 // Cargamos el módulo de mongoose
 const mongoose =  require('mongoose');
+var Schema=mongoose.Schema;
 
 // Usaremos los esquemas
 
@@ -10,7 +11,7 @@ const User = mongoose.model('users',{
     nombre: {type:String, required:true},
     telefono:  {type:String, required:true},
     isWorker: {type:Boolean},
-    Save:{type: Array}
+    Save:  [{type: Schema.Types.ObjectId, ref: 'workers' }]
 })
 
 // Exportamos el modelo para usarlo en otros ficheros
