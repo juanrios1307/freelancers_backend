@@ -10,6 +10,7 @@ const User = mongoose.model('users',{
     pwd:  {type:String, required:true},
     nombre: {type:String, required:true},
     telefono:  {type:String, required:true},
+    ciudad: {type:String, required:true},
     isWorker: {type:Boolean},
     Save:  [{type: Schema.Types.ObjectId, ref: 'workers' }]
 })
