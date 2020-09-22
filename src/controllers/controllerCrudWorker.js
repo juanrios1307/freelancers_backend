@@ -2,7 +2,7 @@ const ControllerWorker={}
 const bcrypt = require('bcryptjs');
 const User=require('../models/User')
 const Worker=require('../models/Worker')
-
+const fs=require('fs')
 
 ControllerWorker.obtener = (req, res) =>{
 
@@ -47,6 +47,7 @@ ControllerWorker.crear= async (req, res)=>{
             res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
         }
         else {
+
             //Se crea modelo de trabajador y se sube a DB
             const worker=new Worker({
                 user,

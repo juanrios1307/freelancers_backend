@@ -9,8 +9,8 @@ const Worker = mongoose.model('workers',{
     profesion: {type:String ,required:true },
     yearsXperience: {type: Number ,required:true},
     experiencia : {type: String , required: true},
-    titulo :  { data: Buffer, contentType: String },
-    imagen : { data: Buffer, contentType: String },
+    titulo :   {type: String},
+    imagen : {type: String },
     user: { type: Schema.ObjectId, ref: 'users' }
 })
 
