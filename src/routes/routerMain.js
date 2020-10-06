@@ -15,6 +15,7 @@ route.all('/', function(req, res, next) {
 route.get('/',controlMain.obtenerProfesiones)
 route.get('/workers',controlMain.obtenerWorkers)
 route.get('/anunces',controlMain.obtenerAnunces)
+route.get('/promworkers',controlMain.obtenerPromotedWorkers)
 
 
 module.exports =route
