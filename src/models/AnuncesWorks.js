@@ -8,8 +8,9 @@ const AnunceWork = mongoose.model('anunceWork',{
     user: { type: Schema.ObjectId, ref: 'users' },
     profesion:  {type:String, required:true},
     presupuesto: {type:String, required:true},
-    locacion:  {type:String, required:true},
-    especificaciones:  {type:String, required:true}
+    ciudad:  {type:String, required:true},
+    especificaciones:  {type:String, required:true},
+    imagen : {type: String }
 })
 
 // Exportamos el modelo para usarlo en otros ficheros

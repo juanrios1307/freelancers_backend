@@ -55,7 +55,8 @@ ControllerWorker.crear= async (req, res)=>{
                 yearsXperience,
                 experiencia,
                 titulo,
-                imagen
+                imagen,
+                Comments:[]
             })
             await worker.save()
             //Se envia respuesta

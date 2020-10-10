@@ -47,7 +47,9 @@ ControllerMain.obtenerProfesiones = (req, res) =>{
 
 ControllerMain.obtenerWorkers =(req,res)=>{
 
-    if(req.headers['profesion']){
+    const profesion=req.headers['profesion']
+
+    if(profesion && profesion!="null"){
         const profesion=req.headers['profesion']
         console.log(profesion)
 
@@ -63,7 +65,7 @@ ControllerMain.obtenerWorkers =(req,res)=>{
 
     }else {
 
-        console.log("No")
+        console.log("No profesion")
         // se buscan todos los Workers
         Worker.find({}, function (err, workers) {
             if (err)
@@ -96,7 +98,9 @@ ControllerMain.obtenerPromotedWorkers =(req,res)=>{
 
 ControllerMain.obtenerAnunces =(req,res)=>{
 
-    if(req.headers['profesion']){
+    const profesion=req.headers['profesion']
+
+    if(profesion && profesion!="null"){
         const profesion=req.headers['profesion']
         console.log(profesion)
 
@@ -112,7 +116,7 @@ ControllerMain.obtenerAnunces =(req,res)=>{
 
     }else {
 
-        console.log("No")
+        console.log("No profesion")
         // se buscan todos los Workers
         AnuncesWorks.find({}, function (err, anunces) {
             if (err)
