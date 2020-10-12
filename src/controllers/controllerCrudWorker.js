@@ -39,6 +39,9 @@ ControllerWorker.crear= async (req, res)=>{
     //Se inicializan datos a guardar
     var {profesion,yearsXperience,titulo,experiencia,imagen} =req.body //atributos
 
+    profesion=profesion.toLowerCase()
+    experiencia=experiencia.toLowerCase()
+
     const user=req.decoded.sub
 
     User.findByIdAndUpdate(user, { isWorker: true },async function (err) {

@@ -12,7 +12,7 @@ route.all('/', function(req, res, next) {
     next()
 });
 
-route.get('/',protectedRoutes.verifyToken,controllerAnunces.obtener)
+route.get('/:id?',protectedRoutes.verifyToken,controllerAnunces.obtener)
 route.post('/',protectedRoutes.verifyToken,controllerAnunces.crear)
 route.put('/',protectedRoutes.verifyToken,controllerAnunces.actualizar)
 route.delete('/',protectedRoutes.verifyToken,controllerAnunces.eliminar)

@@ -11,6 +11,7 @@ const AnunceWork = mongoose.model('anunceWork',{
     presupuesto: {type:String, required:true},
     ciudad:  {type:String, required:true},
     especificaciones:  {type:String, required:true},
+    date: { type: Date, default: Date.now },
     imagen : {type: String }
 })
 
