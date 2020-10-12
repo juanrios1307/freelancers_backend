@@ -6,6 +6,7 @@ var Schema=mongoose.Schema;
 // Creamos el objeto del esquema y sus atributos
 const AnunceWork = mongoose.model('anunceWork',{
     user: { type: Schema.ObjectId, ref: 'users' },
+    titulo: {type:String, required:true},
     profesion:  {type:String, required:true},
     presupuesto: {type:String, required:true},
     ciudad:  {type:String, required:true},

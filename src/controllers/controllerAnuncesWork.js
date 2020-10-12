@@ -33,13 +33,14 @@ ControllerAnunces.obtener = (req,res)=>{
 ControllerAnunces.crear = async (req,res)=>{
     const user=req.decoded.sub
 
-    var { profesion, presupuesto, locacion, especificaciones,imagen} =req.body //atributos
+    var { titulo, profesion, presupuesto, ciudad, especificaciones,imagen} =req.body //atributos
 
     const registro=new AnuncesWorks({
         user,
+        titulo,
         profesion,
         presupuesto,
-        locacion,
+        ciudad,
         especificaciones,
         imagen
     })
