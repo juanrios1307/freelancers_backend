@@ -15,13 +15,13 @@ ControllerLogin.authenticate= async (req,res)=> {
         const token = jwt.sign({sub: user.id}, config.secret,
             {expiresIn: 86400});
 
-        res.json({
+        res.status(200).json({
             token:token ,
             mensaje:"Sesion Iniciada"
         });
 
     }else {
-        res.json({ mensaje: "Usuario o contraseña incorrectos"})
+        res.status(201).json({ mensaje: "Usuario o contraseña incorrectos"})
     }
 }
 
