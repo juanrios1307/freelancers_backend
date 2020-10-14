@@ -1,8 +1,8 @@
-const ControllerContact={}
+const ControllerSave={}
 const User=require('../models/User')
 const Worker=require('../models/Worker')
 
-ControllerContact.obtener=(req,res)=>{
+ControllerSave.obtener=(req,res)=>{
     const id=req.decoded.sub
 
     User.findById(id, {"Save":1 ,"_id":0},async function  (err, saves) {
@@ -32,14 +32,15 @@ ControllerContact.obtener=(req,res)=>{
     })
 }
 
-ControllerContact.crear=(req,res)=>{
+ControllerSave.crear=(req,res)=>{
 
     const id=req.decoded.sub
-    const worker=req.body.Save
+    const {Save}=req.body
 
-    Worker.findById(worker,function (err,work){
-        if(err){
-            res.status(404).json({ status: "error", data: "No se ha encontrado el worker con id: "+worker});
+
+    Worker.findById(Save,function (err, work){
+        if(err || !work){
+            res.status(404).json({ status: "error", data: "No se ha encontrado el worker con id: "+Save});
         }else{
             User.findByIdAndUpdate(id,  {  $push : { Save : work }}, function (err) {
                 if (err) {
@@ -56,4 +57,22 @@ ControllerContact.crear=(req,res)=>{
 
 }
 
-module.exports=ControllerContact
+ControllerSave.eliminar=(req, res)=>{
+
+    const user=req.decoded.sub
+    const work=req.params.id
+
+    User.findByIdAndUpdate(user,  {  $pull : { Save : work }}, function (err) {
+        if (err) {
+            // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
+            res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
+        } else {
+            // Devolvemos el código HTTP 200.
+            res.status(200).json({ status: "ok", data: "Worker eliminado list" });
+
+        }
+    });
+
+}
+
+module.exports=ControllerSave

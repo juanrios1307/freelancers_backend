@@ -17,18 +17,9 @@ ControllerAnunces.obtener = (req,res)=>{
                 // También podemos devolver así la información:
                 if (anunces.user == user) {
 
-                    AnuncesWorks.findById(user, function (err, anunce) {
-                        if (err) {
-                            // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-                            res.status(404).json({
-                                status: "error",
-                                data: "No se ha encontrado el anuncio con id: " + req.params.id
-                            });
-                        } else {
-                            // También podemos devolver así la información:
-                            res.status(200).json({status: "ok", data: anunce});
-                        }
-                    })
+                    // También podemos devolver así la información:
+                    res.status(200).json({status: "ok", data: anunces});
+
                 } else {
                     res.status(404).json({status: "error", data: "El id no corresponde a tu peticion: "});
                 }
@@ -150,7 +141,16 @@ ControllerAnunces.eliminar=(req, res)=>{
                     }
                     else
                     {
-                        res.status(200).json({ status: "ok", data: "Se ha eliminado correctamente el anuncio con id: "+req.params.id});
+                        User.findByIdAndUpdate(user,  {  $pull : { Anunces : req.params.id }}, function (err) {
+                            if (err) {
+                                // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
+                                res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
+                            } else {
+                                // Devolvemos el código HTTP 200.
+                                res.status(200).json({ status: "ok", data: "Anuncio eliminado in list" });
+
+                            }
+                        });
 
                     }
                 });
