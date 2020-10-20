@@ -37,7 +37,7 @@ ControllerWorker.obtener = (req, res) =>{
 ControllerWorker.crear= async (req, res)=>{
 
     //Se inicializan datos a guardar
-    var {profesion,yearsXperience,titulo,experiencia,imagen} =req.body //atributos
+    var {profesion,yearsXperience,experiencia,imagen} =req.body //atributos
 
     profesion=profesion.toLowerCase()
     experiencia=experiencia.toLowerCase()
@@ -57,7 +57,6 @@ ControllerWorker.crear= async (req, res)=>{
                 profesion,
                 yearsXperience,
                 experiencia,
-                titulo,
                 imagen,
                 Comments:[]
             })

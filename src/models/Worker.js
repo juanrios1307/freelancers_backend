@@ -9,14 +9,13 @@ const Worker = mongoose.model('workers',{
     profesion: {type:String ,required:true },
     yearsXperience: {type: Number ,required:true},
     experiencia : {type: String , required: true},
-    titulo :   {type: String},
     imagen : {type: String },
     user: { type: Schema.ObjectId, ref: 'users' },
     Comments:  [
         {user: {type: Schema.Types.ObjectId, ref: 'users'},
             comment: {type:String, required:true},
             rating:  {type:String, required:true},
-            date: { type: Date, default: Date.now }
+            date: { type: Date, default: Date.now() }
             }]
 })
 
