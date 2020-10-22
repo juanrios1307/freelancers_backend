@@ -4,7 +4,7 @@ var Schema=mongoose.Schema;
 // Usaremos los esquemas
 
 // Creamos el objeto del esquema y sus atributos
-const Message = mongoose.model('Chat',{
+const Chat = mongoose.model('Chat',{
     user: { type: Schema.ObjectId, ref: 'users' },
     worker: { type: Schema.ObjectId, ref: 'workers' },
     Mensajes:[{
@@ -16,4 +16,4 @@ const Message = mongoose.model('Chat',{
 })
 
 // Exportamos el modelo para usarlo en otros ficheros
-module.exports = Message
+module.exports = Chat

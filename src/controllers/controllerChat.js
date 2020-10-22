@@ -1,5 +1,5 @@
 const ControllerChat={}
-const Chat=require('../models/Message')
+const Chat=require('../models/Chat')
 
 
 

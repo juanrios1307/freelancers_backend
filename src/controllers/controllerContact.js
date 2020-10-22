@@ -1,25 +1,8 @@
 const ControllerContact={}
-const Message=require('../models/ContactMessage')
 const nodemailer = require('nodemailer');
 const Worker=require('../models/Worker')
 const User=require('../models/User')
 
-
-ControllerContact.obtener= async (req,res) =>{
-
-    const user=req.decoded.sub
-
-   await Message.find({user}, function (err, messages) {
-        if (err) {
-            // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-            res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+req.params.id});
-        } else {
-            // También podemos devolver así la información:
-                res.status(200).json({ status: "ok", data: messages });
-        }
-    });
-
-}
 
 ControllerContact.crear= async (req,res)=>{
 
