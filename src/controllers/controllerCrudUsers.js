@@ -35,7 +35,8 @@ ControllerUser.crear= async (req,res)=>{
         telefono,
         ciudad,
         Save:[],
-        Anunces:[]
+        Anunces:[],
+        Chats:[]
     })
 
     await  registro.save()

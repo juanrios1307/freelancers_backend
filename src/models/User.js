@@ -13,7 +13,8 @@ const User = mongoose.model('users',{
     ciudad: {type:String, required:true},
     isWorker: {type:Boolean},
     Save:  [{type: Schema.Types.ObjectId, ref: 'workers' }],
-    Anunces:  [{type: Schema.Types.ObjectId, ref: 'anunceWork' }]
+    Anunces:  [{type: Schema.Types.ObjectId, ref: 'anunceWork' }],
+    Chats:  [{type: Schema.Types.ObjectId, ref: 'chat' }]
 })
 
 // Exportamos el modelo para usarlo en otros ficheros
