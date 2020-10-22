@@ -4,12 +4,15 @@ var Schema=mongoose.Schema;
 // Usaremos los esquemas
 
 // Creamos el objeto del esquema y sus atributos
-const Message = mongoose.model('Message',{
+const Message = mongoose.model('Chat',{
     user: { type: Schema.ObjectId, ref: 'users' },
     worker: { type: Schema.ObjectId, ref: 'workers' },
-    mensaje:  {type:String, required:true},
-    date: { type: Date, default: Date.now },
-    direccion:  {type:String, required:true}
+    Mensajes:[{
+        mensaje: {type: String, required: true},
+        date: {type: Date, default: Date.now},
+        direccion: {type: String, required: true}
+    }]
+
 })
 
 // Exportamos el modelo para usarlo en otros ficheros

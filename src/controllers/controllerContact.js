@@ -1,6 +1,6 @@
 const ControllerContact={}
 const Message=require('../models/ContactMessage')
-var nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 const Worker=require('../models/Worker')
 const User=require('../models/User')
 

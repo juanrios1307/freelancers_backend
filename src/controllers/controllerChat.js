@@ -1,5 +1,8 @@
 const ControllerChat={}
-const Messages=require('../models/Message')
+const Chat=require('../models/Message')
+
+
+
 
 
 module.exports=ControllerChat
