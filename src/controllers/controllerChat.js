@@ -134,7 +134,8 @@ ControllerChat.obtener = async (req,res)=>{
                 // También podemos devolver así la información:
                 if (chat.user == user ) {
                     var r=[]
-                    chat.push({"isUser":true})
+                    r.push({"isUser":true})
+                    r.push(chat)
                     // También podemos devolver así la información:
                     res.status(200).json({status: "ok", data: r});
 
