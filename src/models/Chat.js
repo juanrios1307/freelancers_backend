@@ -6,7 +6,7 @@ var Schema=mongoose.Schema;
 // Creamos el objeto del esquema y sus atributos
 const Chat = mongoose.model('chat',{
     user: { type: Schema.ObjectId, ref: 'users' },
-    worker: { type: Schema.ObjectId, ref: 'workers' },
+    worker: { type: Schema.ObjectId, ref: 'users' },
     Mensajes:[{
         mensaje: {type: String, required: true},
         date: {type: Date, default: Date.now},
