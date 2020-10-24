@@ -1,10 +1,6 @@
 const ControllerUpdatePwd={}
-
-const config = require('../config.json');
-const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User=require('../models/User');
-const Worker=require('../models/Worker');
 const nodemailer = require("nodemailer");
 
 ControllerUpdatePwd.send= (req,res)=> {
@@ -37,7 +33,7 @@ ControllerUpdatePwd.send= (req,res)=> {
                if (error) {
                    res.status(404).json({ status: "error", data: error});
                } else {
-                   res.status(200).json({ status: "ok", data: "Formulario enviado"});
+                   res.status(200).json({ status: "ok", data: "Formulario enviado, puedes revisar tu correo!"});
                }
            });
        }

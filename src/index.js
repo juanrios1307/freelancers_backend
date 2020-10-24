@@ -3,7 +3,6 @@ const app=express()
 const morgan=require('morgan')
 const cors= require('cors')
 const bodyparser=require('body-parser')
-const jwt = require('./helpers/jwt');
 const errorHandler = require('./helpers/errorHandler');
 const cookieParser = require('cookie-parser');
 
