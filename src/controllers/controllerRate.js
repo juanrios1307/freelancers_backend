@@ -34,16 +34,36 @@ ControllerRate.crear = async (req,res)=>{
         if(err){
             res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
         }else{
-            Worker.findByIdAndUpdate(worker,  {  $push : { Comments :Comment}}, function (err) {
+            Worker.findById(worker,function (err,work){
                 if (err) {
                     // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
                     res.status(404).json({ status: "error", data: "No se ha encontrado el worker con id: "+worker});
                 } else {
-                    // Devolvemos el código HTTP 200.
-                    res.status(200).json({ status: "ok", data: "Comentario guardado in worker" });
+                    var promedio=((work.promedio*work.Comments.length)+parseInt(Comment.rating))/(work.Comments.length+1)
 
+                    Worker.findByIdAndUpdate(worker,  {  $push : { Comments :Comment}}, function (err) {
+                        if (err) {
+                            // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
+                            res.status(404).json({ status: "error", data: "No se ha encontrado el worker con id: "+worker});
+                        } else {
+                            Worker.findByIdAndUpdate(worker,  {  $set : { promedio :promedio}}, function (err) {
+                                if (err) {
+                                    // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
+                                    res.status(404).json({ status: "error", data: "No se ha encontrado el worker con id: "+worker});
+                                } else {
+
+                                    // Devolvemos el código HTTP 200.
+                                    res.status(200).json({ status: "ok", data: "Comentario guardado in worker" });
+
+                                }
+                            });
+
+
+                        }
+                    });
                 }
-            });
+            })
+
         }
     });
 

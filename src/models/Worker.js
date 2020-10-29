@@ -11,6 +11,7 @@ const Worker = mongoose.model('workers',{
     experiencia : {type: String , required: true},
     imagen : {type: String },
     user: { type: Schema.ObjectId, ref: 'users' },
+    promedio:{type:String, required:true},
     Comments:  [
         {user: {type: Schema.Types.ObjectId, ref: 'users'},
             comment: {type:String, required:true},

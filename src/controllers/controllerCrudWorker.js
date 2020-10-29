@@ -58,6 +58,7 @@ ControllerWorker.crear= async (req, res)=>{
                 yearsXperience,
                 experiencia,
                 imagen,
+                promedio:"0",
                 Comments:[]
             })
             await worker.save()

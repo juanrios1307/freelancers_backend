@@ -10,7 +10,7 @@ ControllerMain.obtenerProfesiones = (req, res) =>{
         console.log(profesion)
 
 
-        Worker.find({profesion}, {"profesion": 1}, function (err, workers) {
+        Worker.find( { profesion : {$regex : "^"+profesion } } , {"profesion": 1}, function (err, workers) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422
                 return (res.type('json').status(422).send({
@@ -55,7 +55,7 @@ ControllerMain.obtenerWorkers =(req,res)=>{
         console.log(profesion)
 
 
-        Worker.find({profesion}, function (err, workers) {
+        Worker.find( { profesion : {$regex : "^"+profesion } } , function (err, workers) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
                 return (res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
@@ -107,9 +107,7 @@ ControllerMain.obtenerPromotedWorkers =(req,res)=>{
 
             // También podemos devolver así la información:
             res.status(200).json({ status: "ok", data: workers });
-        }).populate('user').limit(3);
-
-
+        }).populate('user').sort({"promedio":-1}).limit(3);
 }
 
 
@@ -123,7 +121,7 @@ ControllerMain.obtenerAnunces =(req,res)=>{
         console.log(profesion)
 
 
-        AnuncesWorks.find({profesion}, function (err, anunces) {
+        AnuncesWorks.find( { profesion : {$regex : "^"+profesion } } , function (err, anunces) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
                 return (res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
