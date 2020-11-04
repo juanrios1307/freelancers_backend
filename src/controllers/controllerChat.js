@@ -5,11 +5,14 @@ const Worker = require('../models/Worker')
 const Anunce = require('../models/AnuncesWorks')
 
 ControllerChat.crear = async (req,res)=> {
-    const user=req.decoded.sub
-    const id=req.params.id
-    const isWorker=req.headers['isWorker']
+    const user=req.decoded.sub ;
+    const id=req.params.id ;
+    const isWorker= req.headers['isworker'] ;
 
-    if(isWorker===true) {
+    console.log("isworker?"+isWorker)
+
+    if(isWorker == "true" ) {
+        console.log("IsWorker")
         Worker.findById(id, async function (err, worker) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422
@@ -76,6 +79,7 @@ ControllerChat.crear = async (req,res)=> {
             }
         })
     }else{
+        console.log("IsAnunce")
         Anunce.findById(id, async function (err, anunces) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422
