@@ -26,7 +26,6 @@ ControllerMain.obtenerProfesiones = (req, res) =>{
         });
     }else {
 
-        console.log("No")
         // Se buscan todas las profesiones
         Worker.find({}, {"profesion": 1, "_id": 0}, function (err, workers) {
             if (err)
@@ -79,7 +78,6 @@ ControllerMain.obtenerWorkers =(req,res)=>{
             }).populate('user')
 
         }else {
-            console.log("No profesion")
             // se buscan todos los Workers
             Worker.find({}, function (err, workers) {
                 if (err)

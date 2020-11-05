@@ -11,4 +11,13 @@ route.all('/', function(req, res, next) {
     next()
 });
 
+route.get('/ciudades',controlFilter.obtenerCiudades)
+route.get('/profesion',controlFilter.obtenerProfesion)
+route.get('/promedio',controlFilter.obtenerPromedio)
+route.get('/years',controlFilter.obtenerYearsExperience)
+
+route.get('/ciudadesa',controlFilter.obtenerCiudadesAnunces)
+route.get('/date',controlFilter.obtenerFecha)
+route.get('/presupuesto',controlFilter.obtenerPresupuesto)
+
 module.exports =route
