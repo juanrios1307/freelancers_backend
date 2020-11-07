@@ -49,6 +49,11 @@ ControllerMain.obtenerWorkers =(req,res)=>{
     const profesion=req.headers['profesion']
     const id=req.headers['id']
 
+    const years=req.headers['years']
+    const valoracion=req.headers['valoracion']
+
+
+
     if(profesion && profesion!="null"){
         const profesion=req.headers['profesion']
         console.log(profesion)
@@ -61,7 +66,7 @@ ControllerMain.obtenerWorkers =(req,res)=>{
 
             // También podemos devolver así la información:
             res.status(200).json({ status: "ok", data: workers });
-        }).populate('user');
+        }).populate('user').sort({"promedio": (valoracion == "true" ? -1 : 1)}).sort({"yearsXperience": (years == "true" ? -1 : 1)});
 
     }else {
         if(id && id!="null"){
@@ -89,7 +94,7 @@ ControllerMain.obtenerWorkers =(req,res)=>{
 
                 // También podemos devolver así la información:
                 res.status(200).json({status: "ok", data: workers});
-            }).populate('user');
+            }).populate('user').sort({"promedio": (valoracion == "true" ? -1 : 1)}).sort({"yearsXperience": (years == "true" ? -1 : 1)});
         }
     }
 
@@ -113,6 +118,8 @@ ControllerMain.obtenerAnunces =(req,res)=>{
 
     const profesion=req.headers['profesion']
     const id=req.headers['id']
+    const presupuesto=req.headers['presupuesto']
+    const fecha=req.headers['fecha']
 
     if(profesion && profesion!="null"){
         const profesion=req.headers['profesion']
@@ -126,7 +133,7 @@ ControllerMain.obtenerAnunces =(req,res)=>{
 
             // También podemos devolver así la información:
             res.status(200).json({ status: "ok", data: anunces });
-        }).populate('user');
+        }).populate('user').sort({"date": (fecha == "true" ? -1 : 1)}).sort({"presupuesto": (presupuesto == "true" ? -1 : 1)});
 
     }else {
         if (id && id != "null") {
@@ -144,7 +151,6 @@ ControllerMain.obtenerAnunces =(req,res)=>{
 
         } else {
 
-            console.log("No profesion")
             // se buscan todos los Workers
             AnuncesWorks.find({}, function (err, anunces) {
                 if (err)
@@ -156,7 +162,7 @@ ControllerMain.obtenerAnunces =(req,res)=>{
 
                 // También podemos devolver así la información:
                 res.status(200).json({status: "ok", data: anunces});
-            }).populate('user');
+            }).populate('user').sort({"presupuesto": (presupuesto == "true" ? -1 : 1)}).sort({"date": (fecha == "true" ? 1 : -1)});;
 
         }
     }
