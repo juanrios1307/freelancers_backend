@@ -48,7 +48,7 @@ ControllerSave.crear=(req,res)=>{
                     res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+id});
                 } else {
                     // Devolvemos el código HTTP 200.
-                    res.status(200).json({ status: "ok", data: "Worker guardado in list" });
+                    res.status(200).json({ status: "ok", data: "Worker guardado" });
 
                 }
             });
@@ -68,7 +68,7 @@ ControllerSave.eliminar=(req, res)=>{
             res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
         } else {
             // Devolvemos el código HTTP 200.
-            res.status(200).json({ status: "ok", data: "Worker eliminado list" });
+            res.status(200).json({ status: "ok", data: "Worker eliminado" });
 
         }
     });

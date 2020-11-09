@@ -15,8 +15,10 @@ ControllerContact.crear= async (req,res)=>{
     const {mensaje,asunto,isWorker} =req.body //atributos
 
     if(isWorker===true) {
+
         Worker.findById(id, function (err, worker) {
             if (err || worker == null) {
+
                 // Devolvemos el código HTTP 404, de producto no encontrado por su id.
                 res.status(404).json({status: "error", data: "No se ha encontrado el id con id: " + req.params.id});
             } else {
@@ -25,12 +27,13 @@ ControllerContact.crear= async (req,res)=>{
                     service: 'gmail',
                     auth: {
                         user: 'quickservices20202@gmail.com',
-                        pass: '2juan1santiago'
+                        pass: '2Juan1Santiago'
                     }
                 });
 
                 User.findById(worker.user, function (err, user) {
                         if (err) {
+
                             // Devolvemos el código HTTP 404, de producto no encontrado por su id.
                             res.status(404).json({
                                 status: "error",
@@ -46,6 +49,7 @@ ControllerContact.crear= async (req,res)=>{
 
                             transporter.sendMail(mailOptions, function (error, info) {
                                 if (error) {
+
                                     res.status(404).json({status: "error", data: error});
                                 } else {
                                     res.status(200).json({status: "ok", data: "Formulario enviado"});
@@ -59,6 +63,9 @@ ControllerContact.crear= async (req,res)=>{
             }
         }).populate('user')
     }else{
+
+
+
         Anunce.findById(id, function (err, anunce) {
             if (err || anunce == null) {
                 // Devolvemos el código HTTP 404, de producto no encontrado por su id.
@@ -69,12 +76,13 @@ ControllerContact.crear= async (req,res)=>{
                     service: 'gmail',
                     auth: {
                         user: 'quickservices20202@gmail.com',
-                        pass: '2juan1santiago'
+                        pass: '2Juan1Santiago'
                     }
                 });
 
                 User.findById(anunce.user, function (err, user) {
                         if (err) {
+
                             // Devolvemos el código HTTP 404, de producto no encontrado por su id.
                             res.status(404).json({
                                 status: "error",
@@ -90,6 +98,7 @@ ControllerContact.crear= async (req,res)=>{
 
                             transporter.sendMail(mailOptions, function (error, info) {
                                 if (error) {
+
                                     res.status(404).json({status: "error", data: error});
                                 } else {
                                     res.status(200).json({status: "ok", data: "Formulario enviado"});
