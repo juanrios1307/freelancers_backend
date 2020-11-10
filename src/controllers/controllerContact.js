@@ -24,7 +24,7 @@ ControllerContact.crear= async (req,res)=>{
             } else {
                 // También podemos devolver así la información:
                 var transporter = nodemailer.createTransport({
-                    service: 'Hotmail',
+                    service: 'Outlook365',
                     auth: {
                         user: 'quickservices20202@hotmail.com',
                         pass: '2Juan1Santiago'
@@ -73,7 +73,7 @@ ControllerContact.crear= async (req,res)=>{
             } else {
                 // También podemos devolver así la información:
                 var transporter = nodemailer.createTransport({
-                    service: 'Hotmail',
+                    service: 'Outlook365',
                     auth: {
                         user: 'quickservices20202@hotmail.com',
                         pass: '2Juan1Santiago'

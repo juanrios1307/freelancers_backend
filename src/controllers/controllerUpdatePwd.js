@@ -13,7 +13,7 @@ ControllerUpdatePwd.send= (req,res)=> {
 
        }else{
            var transporter = nodemailer.createTransport({
-               service: 'Hotmail',
+               service: 'Outlook365',
                auth: {
                    user: 'quickservices20202@hotmail.com',
                    pass: '2Juan1Santiago'
@@ -25,12 +25,13 @@ ControllerUpdatePwd.send= (req,res)=> {
                to: user.correo,
                subject: "Restablecer contraseña QUICKSERVICES",
                html:"<p>Hola, en el siguiente link puedes restablecer tu contraseña</p>" +
-                   "<a href='http://localhost:3000/updatepwd'>Restablecer Contraseña</a>"
-              // html:"<a href='https://glacial-everglades-42121.herokuapp.com/updatepwd'>Restablecer Contraseña</a>"
+                  // "<a href='http://localhost:3000/updatepwd'>Restablecer Contraseña</a>"
+              "<a href='https://glacial-everglades-42121.herokuapp.com/updatepwd'>Restablecer Contraseña</a>"
            };
 
            transporter.sendMail(mailOptions, function(error, info){
                if (error) {
+                   console.log("error: "+error)
                    res.status(404).json({ status: "error", data: error});
                } else {
                    res.status(200).json({ status: "ok", data: "Formulario enviado, puedes revisar tu correo!"});
