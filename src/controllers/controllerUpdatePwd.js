@@ -16,7 +16,7 @@ ControllerUpdatePwd.send= (req,res)=> {
                service: 'gmail',
                auth: {
                    user: 'quickservices20202@gmail.com',
-                   pass: '2juan1santiago'
+                   pass: '2Juan1Santiago'
                }
            });
 
