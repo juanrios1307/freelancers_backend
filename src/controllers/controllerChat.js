@@ -64,7 +64,7 @@ ControllerChat.crear = async (req,res)=> {
                                                     res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
                                                 } else {
 
-                                                    const mensaje ="Hola, Soy"+chat.user.nombre+", quiero recibir mas información de tu servicio"
+                                                    const mensaje ="Hola, Soy "+chat.user.nombre+", quiero recibir mas información de tu servicio"
 
                                                     var Mensaje={
                                                         mensaje,
