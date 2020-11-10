@@ -24,9 +24,9 @@ ControllerContact.crear= async (req,res)=>{
             } else {
                 // También podemos devolver así la información:
                 var transporter = nodemailer.createTransport({
-                    service: 'gmail',
+                    service: 'Hotmail',
                     auth: {
-                        user: 'quickservices20202@gmail.com',
+                        user: 'quickservices20202@hotmail.com',
                         pass: '2Juan1Santiago'
                     }
                 });
@@ -41,7 +41,7 @@ ControllerContact.crear= async (req,res)=>{
                             });
                         } else {
                             var mailOptions = {
-                                from: 'quickservices20202@gmail.com',
+                                from: 'quickservices20202@hotmail.com',
                                 to: user.correo,
                                 subject: asunto,
                                 text: mensaje
@@ -73,9 +73,9 @@ ControllerContact.crear= async (req,res)=>{
             } else {
                 // También podemos devolver así la información:
                 var transporter = nodemailer.createTransport({
-                    service: 'gmail',
+                    service: 'Hotmail',
                     auth: {
-                        user: 'quickservices20202@gmail.com',
+                        user: 'quickservices20202@hotmail.com',
                         pass: '2Juan1Santiago'
                     }
                 });
@@ -90,7 +90,7 @@ ControllerContact.crear= async (req,res)=>{
                             });
                         } else {
                             var mailOptions = {
-                                from: 'quickservices20202@gmail.com',
+                                from: 'quickservices20202@hotmail.com',
                                 to: user.correo,
                                 subject: asunto,
                                 text: mensaje

@@ -13,15 +13,15 @@ ControllerUpdatePwd.send= (req,res)=> {
 
        }else{
            var transporter = nodemailer.createTransport({
-               service: 'gmail',
+               service: 'Hotmail',
                auth: {
-                   user: 'quickservices20202@gmail.com',
+                   user: 'quickservices20202@hotmail.com',
                    pass: '2Juan1Santiago'
                }
            });
 
            var mailOptions = {
-               from: 'quickservices20202@gmail.com',
+               from: 'quickservices20202@hotmail.com',
                to: user.correo,
                subject: "Restablecer contraseña QUICKSERVICES",
                html:"<p>Hola, en el siguiente link puedes restablecer tu contraseña</p>" +
