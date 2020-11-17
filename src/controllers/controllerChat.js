@@ -272,15 +272,18 @@ ControllerChat.obtener = async (req,res)=>{
                         // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
                         return (res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
 
-                    // También podemos devolver así la información:
-                    chats.push(chat)
+                    else {
+                        // También podemos devolver así la información:
+
+                        chats.push(chat)
 
 
-                    if (chat.user._id == user ) {
-                        isUser.push(true)
+                        if (chat.user._id == user) {
+                            isUser.push(true)
 
-                    }else if(chat.worker._id == user) {
-                        isUser.push(false)
+                        } else if (chat.worker._id == user) {
+                            isUser.push(false)
+                        }
                     }
 
                 }).populate('user').populate('worker')
