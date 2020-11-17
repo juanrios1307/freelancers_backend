@@ -278,10 +278,10 @@ ControllerChat.obtener = async (req,res)=>{
                         chats.push(chat)
 
 
-                        if (chat.user._id == user) {
+                        if (chat.user.id == user) {
                             isUser.push(true)
 
-                        } else if (chat.worker._id == user) {
+                        } else if (chat.worker.id == user) {
                             isUser.push(false)
                         }
                     }
