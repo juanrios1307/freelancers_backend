@@ -20,7 +20,9 @@ ControllerUser.crear= async (req,res)=>{
     var {nombre,correo,pwd,telefono,ciudad} =req.body //atributos
 
     if (await User.findOne({ correo: correo })) {
-        throw 'El correo "' + correo + '" esta en uso';
+        res.json({
+            mensaje:"El correo"+correo+" esta en uso"
+        })
     }
 
     if (pwd) {
