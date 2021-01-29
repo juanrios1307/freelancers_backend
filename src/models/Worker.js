@@ -11,11 +11,11 @@ const Worker = mongoose.model('workers',{
     experiencia : {type: String , required: true},
     imagen : {type: String },
     user: { type: Schema.ObjectId, ref: 'users' },
-    promedio:{type:String, required:true},
+    promedio:{type:Number, required:true},
     Comments:  [
         {user: {type: Schema.Types.ObjectId, ref: 'users'},
             comment: {type:String, required:true},
-            rating:  {type:String, required:true},
+            rating:  {type:Number, required:true},
             date: { type: Date, default: Date.now() }
             }]
 })

@@ -10,7 +10,7 @@ ControllerRate.obtener = (req,res)=>{
     Worker.findById(id, {"Comments":1 ,"_id":0},async function  (err, comments) {
         if (err)
             // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
-            return (res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
+            return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
 
 
         const pubs=comments.Comments
@@ -32,28 +32,28 @@ ControllerRate.crear = async (req,res)=>{
 
     User.findById(user,function (err,user){
         if(err){
-            res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
+            res.status(203).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
         }else{
             Worker.findById(worker,function (err,work){
                 if (err) {
                     // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
-                    res.status(404).json({ status: "error", data: "No se ha encontrado el worker con id: "+worker});
+                    res.status(203).json({ status: "error", data: "No se ha encontrado el worker con id: "+worker});
                 } else {
                     var promedio=((work.promedio*work.Comments.length)+parseInt(Comment.rating))/(work.Comments.length+1)
 
                     Worker.findByIdAndUpdate(worker,  {  $push : { Comments :Comment}}, function (err) {
                         if (err) {
                             // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
-                            res.status(404).json({ status: "error", data: "No se ha encontrado el worker con id: "+worker});
+                            res.status(203).json({ status: "error", data: "No se ha encontrado el worker con id: "+worker});
                         } else {
                             Worker.findByIdAndUpdate(worker,  {  $set : { promedio :promedio}}, function (err) {
                                 if (err) {
                                     // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
-                                    res.status(404).json({ status: "error", data: "No se ha encontrado el worker con id: "+worker});
+                                    res.status(203).json({ status: "error", data: "No se ha encontrado el worker con id: "+worker});
                                 } else {
 
                                     // Devolvemos el código HTTP 200.
-                                    res.status(200).json({ status: "ok", data: "Comentario guardado in worker" });
+                                    res.status(200).json({ status: "ok", data: "Comentario guardado" });
 
                                 }
                             });

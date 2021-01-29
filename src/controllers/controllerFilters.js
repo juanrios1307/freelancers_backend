@@ -11,7 +11,7 @@ ControllerFilters.obtenerProfesion = (req,res) =>{
     Worker.find({"profesion":profesion }, function (err, workers) {
         if (err)
             // Si se ha producido un error, salimos de la función devolviendo  código http 422
-            return (res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
+            return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
 
         // También podemos devolver así la información:
         res.status(200).json({
@@ -33,7 +33,7 @@ ControllerFilters.obtenerYearsExperience= (req,res) =>{
         Worker.find({profesion: {$regex: "^" + profesion}}, function (err, workers) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422
-                return (res.type('json').status(422).send({
+                return (res.type('json').status(203).send({
                     status: "error",
                     data: "No se puede procesar la entidad, datos incorrectos!"
                 }));
@@ -59,7 +59,7 @@ ControllerFilters.obtenerYearsExperience= (req,res) =>{
         Worker.find({profesion: {$regex: "^" + profesion}}, function (err, workers) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422
-                return (res.type('json').status(422).send({
+                return (res.type('json').status(203).send({
                     status: "error",
                     data: "No se puede procesar la entidad, datos incorrectos!"
                 }));
@@ -113,7 +113,7 @@ ControllerFilters.obtenerPromedio =(req,res)=>{
         Worker.find({profesion: {$regex: "^" + profesion}}, function (err, workers) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
-                return (res.type('json').status(422).send({
+                return (res.type('json').status(203).send({
                     status: "error",
                     data: "No se puede procesar la entidad, datos incorrectos!"
                 }));
@@ -137,7 +137,7 @@ ControllerFilters.obtenerCiudades= (req,res) =>{
         Worker.find({ profesion : {$regex : "^"+profesion }}, function (err, workers) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422
-                return (res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
+                return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
             else {
 
                 var cities=[]
@@ -163,7 +163,7 @@ ControllerFilters.obtenerCiudades= (req,res) =>{
            if(err){
                console.log(err)
 
-               res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" });
+               res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" });
            } else{
                res.status(200).json({data:ciudad})
            }
@@ -186,7 +186,7 @@ ControllerFilters.obtenerCiudadesAnunces= (req,res) => {
         Anunce.find({$and: [{ profesion : {$regex : "^"+profesion }}, {"ciudad": ciudad}]}, function (err, anunces) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422
-                return (res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
+                return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
             else {
 
                 res.status(200).json({
@@ -202,7 +202,7 @@ ControllerFilters.obtenerCiudadesAnunces= (req,res) => {
             if(err){
                 console.log(err)
 
-                res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" });
+                res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" });
             } else{
                 res.status(200).json({data:ciudad})
             }
@@ -223,7 +223,7 @@ ControllerFilters.obtenerPresupuesto= (req,res) =>{
         Anunce.find({$and: [{ profesion : {$regex : "^"+profesion }}, {"ciudad": ciudad}]}, function (err, anunces) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422
-                return (res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
+                return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
             else {
 
                 res.status(200).json({
@@ -238,7 +238,7 @@ ControllerFilters.obtenerPresupuesto= (req,res) =>{
         Anunce.find({profesion: {$regex: "^" + profesion}}, function (err, anunces) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
-                return (res.type('json').status(422).send({
+                return (res.type('json').status(203).send({
                     status: "error",
                     data: "No se puede procesar la entidad, datos incorrectos!"
                 }));
@@ -262,7 +262,7 @@ ControllerFilters.obtenerFecha = (req,res) =>{
         Anunce.find({$and: [{ profesion : {$regex : "^"+profesion }}, {"ciudad": ciudad}]}, function (err, anunces) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422
-                return (res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
+                return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
             else {
 
                 res.status(200).json({
@@ -277,7 +277,7 @@ ControllerFilters.obtenerFecha = (req,res) =>{
         Anunce.find({profesion: {$regex: "^" + profesion}}, function (err, anunces) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
-                return (res.type('json').status(422).send({
+                return (res.type('json').status(203).send({
                     status: "error",
                     data: "No se puede procesar la entidad, datos incorrectos!"
                 }));

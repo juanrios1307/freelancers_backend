@@ -13,7 +13,7 @@ ControllerMain.obtenerProfesiones = (req, res) =>{
         Worker.find( { profesion : {$regex : "^"+profesion } } , {"profesion": 1}, function (err, workers) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422
-                return (res.type('json').status(422).send({
+                return (res.type('json').status(203).send({
                     status: "error",
                     data: "No se puede procesar la entidad, datos incorrectos!"
                 }));
@@ -30,7 +30,7 @@ ControllerMain.obtenerProfesiones = (req, res) =>{
         Worker.find({}, {"profesion": 1, "_id": 0}, function (err, workers) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422
-                return (res.type('json').status(422).send({
+                return (res.type('json').status(203).send({
                     status: "error",
                     data: "No se puede procesar la entidad, datos incorrectos!"
                 }));
@@ -62,7 +62,7 @@ ControllerMain.obtenerWorkers =(req,res)=>{
         Worker.find( { profesion : {$regex : "^"+profesion } } , function (err, workers) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
-                return (res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
+                return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
 
             // También podemos devolver así la información:
             res.status(200).json({ status: "ok", data: workers });
@@ -74,7 +74,7 @@ ControllerMain.obtenerWorkers =(req,res)=>{
             Worker.findById(id, function (err, worker) {
                 if (err) {
                     // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-                    res.status(404).json({ status: "error", data: "No se ha encontrado el worker con id: "+id});
+                    res.status(203).json({ status: "error", data: "No se ha encontrado el worker con id: "+id});
                 } else {
 
                     res.status(200).json({ status: "ok", data: worker });
@@ -87,7 +87,7 @@ ControllerMain.obtenerWorkers =(req,res)=>{
             Worker.find({}, function (err, workers) {
                 if (err)
                     // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
-                    return (res.type('json').status(422).send({
+                    return (res.type('json').status(203).send({
                         status: "error",
                         data: "No se puede procesar la entidad, datos incorrectos!"
                     }));
@@ -106,7 +106,7 @@ ControllerMain.obtenerPromotedWorkers =(req,res)=>{
         Worker.find({}, function (err, workers) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
-                return (res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
+                return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
 
             // También podemos devolver así la información:
             res.status(200).json({ status: "ok", data: workers });
@@ -129,7 +129,7 @@ ControllerMain.obtenerAnunces =(req,res)=>{
         AnuncesWorks.find( { profesion : {$regex : "^"+profesion } } , function (err, anunces) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
-                return (res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
+                return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
 
             // También podemos devolver así la información:
             res.status(200).json({ status: "ok", data: anunces });
@@ -141,7 +141,7 @@ ControllerMain.obtenerAnunces =(req,res)=>{
             AnuncesWorks.findById(id, function (err, anunces) {
                 if (err) {
                     // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-                    res.status(404).json({status: "error", data: "No se ha encontrado el anunce con id: " + id});
+                    res.status(203).json({status: "error", data: "No se ha encontrado el anunce con id: " + id});
                 } else {
 
                     res.status(200).json({status: "ok", data: anunces});
@@ -155,7 +155,7 @@ ControllerMain.obtenerAnunces =(req,res)=>{
             AnuncesWorks.find({}, function (err, anunces) {
                 if (err)
                     // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
-                    return (res.type('json').status(422).send({
+                    return (res.type('json').status(203).send({
                         status: "error",
                         data: "No se puede procesar la entidad, datos incorrectos!"
                     }));

@@ -32,7 +32,7 @@ ControllerUpdatePwd.send= (req,res)=> {
            transporter.sendMail(mailOptions, function(error, info){
                if (error) {
                    console.log("error: "+error)
-                   res.status(404).json({ status: "error", data: error});
+                   res.status(203).json({ status: "error", data: error});
                } else {
                    res.status(200).json({ status: "ok", data: "Formulario enviado, puedes revisar tu correo!"});
                }
@@ -54,13 +54,13 @@ ControllerUpdatePwd.actualizar=(req,res)=>{
 
     User.findOne({"correo":correo }, function (err, user) {
         if(err || user==null){
-            return (res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
+            return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
 
         }else {
             User.findByIdAndUpdate(user.id, { $set:{"pwd":pwd} }, function (err,us) {
                 if (err) {
                     // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
-                    res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
+                    res.status(203).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
                 } else {
                     // Devolvemos el código HTTP 200.
                     res.status(200).json({ status: "ok", data: "Contraseña Actualizada" });

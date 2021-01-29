@@ -16,7 +16,7 @@ ControllerChat.crear = async (req,res)=> {
         Worker.findById(id, async function (err, worker) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422
-                return (res.type('json').status(422).send({
+                return (res.type('json').status(203).send({
                     status: "error",
                     data: "No se puede procesar la entidad, datos incorrectos!"
                 }));
@@ -25,7 +25,7 @@ ControllerChat.crear = async (req,res)=> {
                 Chat.find({$and: [{"user": user}, {"worker": worker.user}]}, function (err, chat) {
                     if (err)
                         // Si se ha producido un error, salimos de la función devolviendo  código http 422
-                        return (res.type('json').status(422).send({
+                        return (res.type('json').status(203).send({
                             status: "error",
                             data: "No se puede procesar la entidad, datos incorrectos!"
                         }));
@@ -43,7 +43,7 @@ ControllerChat.crear = async (req,res)=> {
                             User.findByIdAndUpdate(user, {$push: {Chats: registro.id}}, function (err) {
                                 if (err) {
                                     // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
-                                    res.status(404).json({
+                                    res.status(203).json({
                                         status: "error",
                                         data: "No se ha encontrado el usuario con id: " + user
                                     });
@@ -52,7 +52,7 @@ ControllerChat.crear = async (req,res)=> {
                                     User.findByIdAndUpdate(worker.user, {$push: {Chats: registro.id}}, function (err) {
                                         if (err) {
                                             // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
-                                            res.status(404).json({
+                                            res.status(203).json({
                                                 status: "error",
                                                 data: "No se ha encontrado el usuario con id: " + user
                                             });
@@ -61,7 +61,7 @@ ControllerChat.crear = async (req,res)=> {
                                             Chat.findById(registro.id,function (err,chat){
                                                 if (err) {
                                                     // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
-                                                    res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
+                                                    res.status(203).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
                                                 } else {
 
                                                     const mensaje ="Hola, Soy "+chat.user.nombre+", quiero recibir mas información de tu servicio"
@@ -74,7 +74,7 @@ ControllerChat.crear = async (req,res)=> {
                                                     Chat.findByIdAndUpdate(registro.id,{  $push : { Mensajes : Mensaje}}, function (err) {
                                                         if (err) {
                                                                 // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
-                                                            res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
+                                                            res.status(203).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
                                                         } else {
                                                             res.status(200).json({
                                                                 status: "ok",
@@ -107,7 +107,7 @@ ControllerChat.crear = async (req,res)=> {
         Anunce.findById(id, async function (err, anunces) {
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422
-                return (res.type('json').status(422).send({
+                return (res.type('json').status(203).send({
                     status: "error",
                     data: "No se puede procesar la entidad, datos incorrectos!"
                 }));
@@ -116,7 +116,7 @@ ControllerChat.crear = async (req,res)=> {
                 Chat.find({$and: [{"user": user}, {"worker": anunces.user}]}, function (err, chat) {
                     if (err)
                         // Si se ha producido un error, salimos de la función devolviendo  código http 422
-                        return (res.type('json').status(422).send({
+                        return (res.type('json').status(203).send({
                             status: "error",
                             data: "No se puede procesar la entidad, datos incorrectos!"
                         }));
@@ -134,7 +134,7 @@ ControllerChat.crear = async (req,res)=> {
                             User.findByIdAndUpdate(user, {$push: {Chats: registro.id}}, function (err) {
                                 if (err) {
                                     // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
-                                    res.status(404).json({
+                                    res.status(203).json({
                                         status: "error",
                                         data: "No se ha encontrado el usuario con id: " + user
                                     });
@@ -143,7 +143,7 @@ ControllerChat.crear = async (req,res)=> {
                                     User.findByIdAndUpdate(anunces.user, {$push: {Chats: registro.id}}, function (err) {
                                         if (err) {
                                             // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
-                                            res.status(404).json({
+                                            res.status(203).json({
                                                 status: "error",
                                                 data: "No se ha encontrado el usuario con id: " + user
                                             });
@@ -182,7 +182,7 @@ ControllerChat.actualizar = async (req,res)=> {
     Chat.findById(id,function (err,chat){
         if (err) {
             // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
-            res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
+            res.status(203).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
         } else {
 
             var Mensaje
@@ -203,7 +203,7 @@ ControllerChat.actualizar = async (req,res)=> {
                 Chat.findByIdAndUpdate(id,{  $push : { Mensajes : Mensaje}}, function (err) {
                     if (err) {
                         // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
-                        res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
+                        res.status(203).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
                     } else {
                         res.status(200).json({ status: "ok", data: "Mensaje enviado" });
                     }
@@ -211,7 +211,7 @@ ControllerChat.actualizar = async (req,res)=> {
                 })
 
             }else{
-                res.status(404).json({ status: "error", data: "El id no corresponde al chat: "});
+                res.status(203).json({ status: "error", data: "El id no corresponde al chat: "});
             }
 
 
@@ -230,7 +230,7 @@ ControllerChat.obtener = async (req,res)=>{
         await Chat.findById(req.params.id,function (err,chat){
             if (err)
                 // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
-                return (res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
+                return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
 
             // También podemos devolver así la información:
             if(chat.user.id==user || chat.worker.id==user) {
@@ -249,7 +249,7 @@ ControllerChat.obtener = async (req,res)=>{
                 res.status(200).json({status: "ok", data: respuesta});
 
             }else{
-                res.status(404).json({status: "error", data: "El id no corresponde"});
+                res.status(203).json({status: "error", data: "El id no corresponde"});
             }
         }).populate('user').populate('worker')
 
@@ -270,7 +270,7 @@ ControllerChat.obtener = async (req,res)=>{
                 await Chat.findById(pubs[i],function (err,chat){
                     if (err)
                         // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
-                        return (res.type('json').status(422).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
+                        return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
 
                     else {
                         // También podemos devolver así la información:

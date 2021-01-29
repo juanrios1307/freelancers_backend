@@ -13,6 +13,7 @@ const User = mongoose.model('users',{
     ciudad: {type:String, required:true},
     isWorker: {type:Boolean},
     Save:  [{type: Schema.Types.ObjectId, ref: 'workers' }],
+    Workers:  [{type: Schema.Types.ObjectId, ref: 'workers' }],
     Anunces:  [{type: Schema.Types.ObjectId, ref: 'anunceWork' }],
     Chats:  [{type: Schema.Types.ObjectId, ref: 'chat' }]
 })

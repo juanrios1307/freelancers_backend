@@ -8,7 +8,7 @@ const AnunceWork = mongoose.model('anunceWork',{
     user: { type: Schema.ObjectId, ref: 'users' },
     titulo: {type:String, required:true},
     profesion:  {type:String, required:true},
-    presupuesto: {type:String, required:true},
+    presupuesto: {type:Number, required:true},
     ciudad:  {type:String, required:true},
     especificaciones:  {type:String, required:true},
     date: { type: Date, default: Date.now },

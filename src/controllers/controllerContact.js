@@ -20,7 +20,7 @@ ControllerContact.crear= async (req,res)=>{
             if (err || worker == null) {
 
                 // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-                res.status(404).json({status: "error", data: "No se ha encontrado el id con id: " + req.params.id});
+                res.status(203).json({status: "error", data: "No se ha encontrado el id con id: " + req.params.id});
             } else {
                 // También podemos devolver así la información:
                 var transporter = nodemailer.createTransport({
@@ -50,7 +50,7 @@ ControllerContact.crear= async (req,res)=>{
                             transporter.sendMail(mailOptions, function (error, info) {
                                 if (error) {
 
-                                    res.status(404).json({status: "error", data: error});
+                                    res.status(203).json({status: "error", data: error});
                                 } else {
                                     res.status(200).json({status: "ok", data: "Formulario enviado"});
                                 }
@@ -69,7 +69,7 @@ ControllerContact.crear= async (req,res)=>{
         Anunce.findById(id, function (err, anunce) {
             if (err || anunce == null) {
                 // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-                res.status(404).json({status: "error", data: "No se ha encontrado el id con id: " + req.params.id});
+                res.status(203).json({status: "error", data: "No se ha encontrado el id con id: " + req.params.id});
             } else {
                 // También podemos devolver así la información:
                 var transporter = nodemailer.createTransport({
@@ -84,7 +84,7 @@ ControllerContact.crear= async (req,res)=>{
                         if (err) {
 
                             // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-                            res.status(404).json({
+                            res.status(203).json({
                                 status: "error",
                                 data: "No se ha encontrado el id con id: " + req.params.id
                             });
@@ -99,7 +99,7 @@ ControllerContact.crear= async (req,res)=>{
                             transporter.sendMail(mailOptions, function (error, info) {
                                 if (error) {
 
-                                    res.status(404).json({status: "error", data: error});
+                                    res.status(203).json({status: "error", data: error});
                                 } else {
                                     res.status(200).json({status: "ok", data: "Formulario enviado"});
                                 }

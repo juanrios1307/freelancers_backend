@@ -11,7 +11,7 @@ ControllerWorker.obtener = (req, res) =>{
     Worker.findById(req.params.id, function (err, worker) {
         if (err) {
             // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-            res.status(404).json({ status: "error", data: "No se ha encontrado el worker con id: "+req.params.id});
+            res.status(203).json({ status: "error", data: "No se ha encontrado el worker con id: "+req.params.id});
         } else {
             // También podemos devolver así la información:
             if(worker.user == user) {
@@ -19,14 +19,14 @@ ControllerWorker.obtener = (req, res) =>{
                 Worker.findById(user, function (err, worker) {
                     if (err) {
                         // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-                        res.status(404).json({ status: "error", data: "No se ha encontrado el worker con id: "+req.params.id});
+                        res.status(203).json({ status: "error", data: "No se ha encontrado el worker con id: "+req.params.id});
                     } else {
                         // También podemos devolver así la información:
                         res.status(200).json({ status: "ok", data: worker });
                     }
                 })
             }else{
-                res.status(404).json({ status: "error", data: "El id no corresponde a tu peticion: "});
+                res.status(203).json({ status: "error", data: "El id no corresponde a tu peticion: "});
             }
 
         }
@@ -47,7 +47,7 @@ ControllerWorker.crear= async (req, res)=>{
     User.findByIdAndUpdate(user, { isWorker: true },async function (err) {
         if (err) {
             // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
-            res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
+            res.status(203).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
         }
         else {
 
@@ -78,7 +78,7 @@ ControllerWorker.actualizar=(req, res)=>{
     Worker.findById(req.params.id, function (err, worker) {
         if (err) {
             // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-            res.status(404).json({ status: "error", data: "No se ha encontrado el worker con id: "+req.params.id});
+            res.status(203).json({ status: "error", data: "No se ha encontrado el worker con id: "+req.params.id});
         } else {
             // También podemos devolver así la información:
             if(worker.user == user) {
@@ -87,14 +87,14 @@ ControllerWorker.actualizar=(req, res)=>{
                     if (err) {
                         //res.send(err);
                         // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
-                        res.status(404).json({ status: "error", data: "No se ha encontrado el worker con id: "+req.params.id});
+                        res.status(203).json({ status: "error", data: "No se ha encontrado el worker con id: "+req.params.id});
                     } else {
                         // Devolvemos el código HTTP 200.
-                        res.status(200).json({ status: "ok", data: "Usuario actualizado" });
+                        res.status(200).json({ status: "ok", data: "Worker actualizado" });
                     }
                 });
             }else{
-                res.status(404).json({ status: "error", data: "El id no corresponde a tu peticion: "});
+                res.status(203).json({ status: "error", data: "El id no corresponde a tu peticion: "});
             }
 
         }
@@ -109,7 +109,7 @@ ControllerWorker.eliminar=(req, res)=>{
     Worker.findById(req.params.id, function (err, worker) {
         if (err) {
             // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-            res.status(404).json({ status: "error", data: "No se ha encontrado el worker con id: "+req.params.id});
+            res.status(203).json({ status: "error", data: "No se ha encontrado el worker con id: "+req.params.id});
         } else {
             // También podemos devolver así la información:
             if(worker.user == user) {
@@ -118,17 +118,17 @@ ControllerWorker.eliminar=(req, res)=>{
                     if (err || !data) {
                         //res.send(err);
                         // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-                        res.status(404).json({ status: "error", data: "No se ha encontrado el usuario con id: "+req.params.id});
+                        res.status(203).json({ status: "error", data: "No se ha encontrado el usuario con id: "+req.params.id});
                     }
                     else
                     {
-                        res.status(200).json({ status: "ok", data: "Se ha eliminado correctamente el usuario con id: "+req.params.id});
+                        res.status(200).json({ status: "ok", data: "Se ha eliminado correctamente el worker con id: "+req.params.id});
 
                     }
                 });
 
             }else{
-                res.status(404).json({ status: "error", data: "El id no corresponde a tu peticion: "});
+                res.status(203).json({ status: "error", data: "El id no corresponde a tu peticion: "});
             }
 
         }
