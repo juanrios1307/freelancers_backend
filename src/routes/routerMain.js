@@ -16,6 +16,6 @@ route.get('/',controlMain.obtenerProfesiones)
 route.get('/workers',controlMain.obtenerWorkers)
 route.get('/anunces',controlMain.obtenerAnunces)
 route.get('/promworkers',controlMain.obtenerPromotedWorkers)
-
-
+route.get('/moreViews',controlMain.obtenerMoreViewsWorkers)
+route.get('/bestWorkers',controlMain.obtenerBestWorkers)
 module.exports =route

@@ -60,14 +60,30 @@ ControllerRate.crear = async (req,res)=>{
 
 
                         }
-                    });
+                    }); //Cierra Worker
                 }
-            })
+            })//Cierra Worker
 
         }
-    });
+    }); //Cierra User
+
+}
+
+ControllerRate.aprove =(req,res)=>{
+
+    const user=req.decoded.sub;
+    const worker=req.params.id
+    const {respuesta,comment}=req.body
 
 
+    Worker.update({_id:worker,"Comments._id":comment},  {  $set : { "Comments.$.aproved" :respuesta}}, function (err) {
+        if (err) {
+            // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
+            res.status(203).json({ status: "error", data: "No se ha encontrado el worker con id: "+worker});
+        } else {
+            res.status(200).json({status:'ok',data:respuesta?"Comentario Aprobado":"Comentario Rechazado"})
+        }
+    }); //Cierra Worker
 
 }
 

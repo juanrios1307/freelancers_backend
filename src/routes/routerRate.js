@@ -14,5 +14,7 @@ route.all('/', function(req, res, next) {
 
 route.get('/:id',controlRate.obtener)
 route.put('/:id',protectedRoutes.verifyToken,controlRate.crear)
+route.put('/aprove/:id',protectedRoutes.verifyToken,controlRate.crear)
+
 
 module.exports =route

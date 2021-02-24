@@ -16,6 +16,11 @@ const User = mongoose.model('users',{
     Workers:  [{type: Schema.Types.ObjectId, ref: 'workers' }],
     Anunces:  [{type: Schema.Types.ObjectId, ref: 'anunceWork' }],
     Chats:  [{type: Schema.Types.ObjectId, ref: 'chat' }],
+    Membresias:[{
+        description: {type: String, required: true},
+        fechaCompra: {type: Date, default: Date.now},
+        fechaExpiracion: {type: Date, required:true}
+    }],
     Busquedas : [{
         busqueda:  {type:String, required:true},
         date: { type: Date, default: Date.now() },

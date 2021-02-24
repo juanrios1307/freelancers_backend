@@ -102,6 +102,41 @@ ControllerWorker.actualizar=(req, res)=>{
 
 }
 
+ControllerWorker.views = (req,res)=>{
+
+    const user=req.decoded.sub
+
+    const vista={
+        user:user
+    }
+
+    Worker.findById(req.params.id, function (err, worker) {
+        if (err) {
+            // Devolvemos el código HTTP 404, de producto no encontrado por su id.
+            res.status(203).json({ status: "error", data: "No se ha encontrado el worker con id: "+req.params.id});
+        } else {
+            // También podemos devolver así la información:
+            if(worker.user == user) {
+
+                res.status(200).json({ status: "ok", data: "Recuerda, tus visitas no seran contabilizadas!!" });
+
+            }else{
+                Worker.findByIdAndUpdate(req.params.id, {$push: {Vistas: vista}}, function (err) {
+                    if (err) {
+                        //res.send(err);
+                        // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
+                        res.status(203).json({ status: "error", data: "No se ha encontrado el worker con id: "+req.params.id});
+                    } else {
+                        // Devolvemos el código HTTP 200.
+                        res.status(200).json({ status: "ok", data: "Worker actualizado" });
+                    }
+                });
+            }
+
+        }
+    })
+}
+
 ControllerWorker.eliminar=(req, res)=>{
 
     const user=req.decoded.sub
