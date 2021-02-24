@@ -12,7 +12,11 @@ const AnunceWork = mongoose.model('anunceWork',{
     ciudad:  {type:String, required:true},
     especificaciones:  {type:String, required:true},
     date: { type: Date, default: Date.now },
-    imagen : {type: String }
+    imagen : {type: String },
+    Vistas : [{
+        user: {type: Schema.Types.ObjectId, ref: 'users'},
+        date: { type: Date, default: Date.now() }
+    }]
 })
 
 // Exportamos el modelo para usarlo en otros ficheros

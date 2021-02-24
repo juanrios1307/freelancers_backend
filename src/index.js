@@ -31,6 +31,7 @@ app.use('/api/main',require('./routes/routerMain'))
 app.use('/api/rate',require('./routes/routerRate'))
 app.use('/api/saving',require('./routes/routerSavePublications'))
 app.use('/api/updatepwd',require('./routes/routerUpdatePwd'))
+app.use('/api/membership',require('./routes/routerMemberships'))
 
 //start server
 app.listen(process.env.PORT || 5000,()=>{
