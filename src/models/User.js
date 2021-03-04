@@ -21,10 +21,9 @@ const User = mongoose.model('users',{
         fechaCompra: {type: Date, default: Date.now},
         fechaExpiracion: {type: Date, required:true}
     }],
-    Busquedas : [{
-        busqueda:  {type:String, required:true},
-        date: { type: Date, default: Date.now() },
-        WorkersVistos:  [{type: Schema.Types.ObjectId, ref: 'workers' }],
+    WorkersBuscados : [{
+        worker: {type: Schema.Types.ObjectId, ref: 'workers'},
+        date: { type: Date, default: Date.now() }
     }]
 })
 

@@ -16,6 +16,6 @@ route.get('/',protectedRoutes.verifyToken,controllerWorker.obtener)
 route.post('/',protectedRoutes.verifyToken,controllerWorker.crear)
 route.put('/',protectedRoutes.verifyToken,controllerWorker.actualizar)
 route.delete('/',protectedRoutes.verifyToken,controllerWorker.eliminar)
-route.put('/view',protectedRoutes.verifyToken,controllerWorker.views)
+route.put('/view/:id',protectedRoutes.verifyToken,controllerWorker.views)
 
 module.exports =route

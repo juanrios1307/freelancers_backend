@@ -295,4 +295,63 @@ ControllerChat.obtener = async (req,res)=>{
     }
 }
 
+ControllerChat.leer = async (req,res)=>{
+
+    const user=req.decoded.sub
+
+    await Chat.findById(req.params.id,function (err,chat){
+        if (err)
+            // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
+            return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
+
+            if (chat.user.id == user) {
+
+                //Usuario que lee chat user
+
+                //set leido donde emisor =worker
+
+                Chat.update({"_id":req.params.id},{$set: {"Mensajes.$[elem].leido": true}},{multi:true, arrayFilters:[{"elem.emisor":"worker"}]}, function (err) {
+                    if (err) {
+                        // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
+                        return (res.type('json').status(203).send({
+                            status: "error",
+                            data: "No se puede procesar la entidad, datos incorrectos!"
+                        }));
+                    } else  {
+
+                        res.status(200).json({status: "ok", data: "Mensajes leidos por user"});
+
+                    }
+
+                })
+
+            } else if (chat.worker.id == user) {
+
+
+
+                Chat.update({"_id":req.params.id},{$set: {"Mensajes.$[elem].leido": true}},{multi:true, arrayFilters:[{"elem.emisor":"user"}]}, function (err) {
+                    if (err) {
+                        // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
+                        return (res.type('json').status(203).send({
+                            status: "error",
+                            data: "No se puede procesar la entidad, datos incorrectos!"
+                        }));
+                    } else  {
+
+                        res.status(200).json({status: "ok", data: "Mensajes leidos por worker"});
+
+                    }
+
+                })
+
+
+
+            }
+
+
+
+
+    }).populate('user').populate('worker')
+}
+
 module.exports=ControllerChat
