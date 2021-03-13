@@ -15,5 +15,6 @@ route.all('/', function(req, res, next) {
 route.get('/:id?',protectedRoutes.verifyToken,controlChat.obtener)
 route.post('/:id',protectedRoutes.verifyToken,controlChat.crear)
 route.put('/:id',protectedRoutes.verifyToken,controlChat.actualizar)
+route.put('/leer/:id',protectedRoutes.verifyToken,controlChat.leer)
 
 module.exports =route

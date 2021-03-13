@@ -15,7 +15,16 @@ const User = mongoose.model('users',{
     Save:  [{type: Schema.Types.ObjectId, ref: 'workers' }],
     Workers:  [{type: Schema.Types.ObjectId, ref: 'workers' }],
     Anunces:  [{type: Schema.Types.ObjectId, ref: 'anunceWork' }],
-    Chats:  [{type: Schema.Types.ObjectId, ref: 'chat' }]
+    Chats:  [{type: Schema.Types.ObjectId, ref: 'chat' }],
+    Membresias:[{
+        description: {type: String, required: true},
+        fechaCompra: {type: Date, default: Date.now},
+        fechaExpiracion: {type: Date, required:true}
+    }],
+    WorkersBuscados : [{
+        worker: {type: Schema.Types.ObjectId, ref: 'workers'},
+        date: { type: Date, default: Date.now() }
+    }]
 })
 
 // Exportamos el modelo para usarlo en otros ficheros

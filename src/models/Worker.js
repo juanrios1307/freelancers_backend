@@ -12,12 +12,17 @@ const Worker = mongoose.model('workers',{
     imagen : {type: String },
     user: { type: Schema.ObjectId, ref: 'users' },
     promedio:{type:Number, required:true},
-    Comments:  [
-        {user: {type: Schema.Types.ObjectId, ref: 'users'},
+    Comments:  [{
+            user: {type: Schema.Types.ObjectId, ref: 'users'},
             comment: {type:String, required:true},
             rating:  {type:Number, required:true},
+            date: { type: Date, default: Date.now() },
+            aproved : {type:Boolean}
+            }],
+    Vistas : [{
+            user: {type: Schema.Types.ObjectId, ref: 'users'},
             date: { type: Date, default: Date.now() }
-            }]
+        }]
 })
 
 // Exportamos el modelo para usarlo en otros ficheros

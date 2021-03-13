@@ -10,7 +10,8 @@ const Chat = mongoose.model('chat',{
     Mensajes:[{
         mensaje: {type: String, required: true},
         date: {type: Date, default: Date.now},
-        emisor: {type: String, required: true}
+        emisor: {type: String, required: true},
+        leido:{type:Boolean, default:false}
     }]
 
 })

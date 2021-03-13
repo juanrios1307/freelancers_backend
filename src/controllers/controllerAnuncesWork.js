@@ -72,7 +72,8 @@ ControllerAnunces.crear = async (req,res)=>{
         presupuesto,
         ciudad,
         especificaciones,
-        imagen
+        imagen,
+        Vistas: [],
     })
 
     await  registro.save()
@@ -88,6 +89,7 @@ ControllerAnunces.crear = async (req,res)=>{
         }
     });
 
+
 }
 
 ControllerAnunces.actualizar=(req, res)=>{
@@ -101,7 +103,6 @@ ControllerAnunces.actualizar=(req, res)=>{
         } else {
             // También podemos devolver así la información:
             if(anunces.user == user) {
-
                 AnuncesWorks.findByIdAndUpdate(req.params.id, { $set: req.body }, function (err) {
                     if (err) {
                         //res.send(err);
@@ -153,5 +154,43 @@ ControllerAnunces.eliminar=(req, res)=>{
         }
     })
 
+}
+
+ControllerAnunces.views =(req,res)=>{
+
+    const user=req.decoded.sub
+
+    const vista={
+        user:user
+    }
+
+
+    AnuncesWorks.findById(req.params.id, function (err, anunce) {
+        if (err) {
+            // Devolvemos el código HTTP 404, de producto no encontrado por su id.
+            res.status(203).json({ status: "error", data: "No se ha encontrado el anunce con id: "+req.params.id});
+        } else {
+            // También podemos devolver así la información:
+            if(anunce.user == user) {
+
+                res.status(200).json({ status: "ok", data: "Recuerda, tus visitas no seran contabilizadas!!" });
+
+            }else{
+
+
+                AnuncesWorks.findByIdAndUpdate(req.params.id, {$push: {Vistas: vista}}, function (err) {
+                    if (err) {
+                        //res.send(err);
+                        // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
+                        res.status(203).json({ status: "error", data: "No se ha encontrado el anunce con id: "+req.params.id});
+                    } else {
+
+                        res.status(200).json({ status: "ok", data: "Vista Guardada en anuncio!!" });
+                    }
+                });
+            }
+
+        }
+    })
 }
 module.exports=ControllerAnunces

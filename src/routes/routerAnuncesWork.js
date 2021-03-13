@@ -16,6 +16,7 @@ route.get('/:id?',protectedRoutes.verifyToken,controllerAnunces.obtener)
 route.post('/',protectedRoutes.verifyToken,controllerAnunces.crear)
 route.put('/:id',protectedRoutes.verifyToken,controllerAnunces.actualizar)
 route.delete('/:id',protectedRoutes.verifyToken,controllerAnunces.eliminar)
+route.put('/view/:id',protectedRoutes.verifyToken,controllerAnunces.views)
 
 
 module.exports =route

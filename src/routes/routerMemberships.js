@@ -1,6 +1,6 @@
 const  {Router} =require('express')
 const route=Router()
-const  controlRate=require('../controllers/controllerRate')
+const  controlMemberShips=require('../controllers/controllerMemberships')
 const protectedRoutes=require('../helpers/protectedRoutes')
 
 route.all('/', function(req, res, next) {
@@ -12,9 +12,8 @@ route.all('/', function(req, res, next) {
     next()
 });
 
-route.get('/:id',controlRate.obtener)
-route.put('/:id',protectedRoutes.verifyToken,controlRate.crear)
-route.put('/aprove/:id',protectedRoutes.verifyToken,controlRate.crear)
+route.post('/',protectedRoutes.verifyToken,controlMemberShips.crearPago)
+route.get('/',protectedRoutes.verifyToken,controlMemberShips.obtenerPagos)
 
 
 module.exports =route
