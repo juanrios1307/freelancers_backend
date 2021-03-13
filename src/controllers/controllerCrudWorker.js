@@ -34,6 +34,7 @@ ControllerWorker.obtener = (req, res) =>{
             }
         }).populate('user')
 
+
     }else{
         User.findById(user, {"Workers":1 ,"_id":0},async function  (err, worker) {
             if (err)

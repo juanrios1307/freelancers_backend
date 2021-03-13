@@ -89,6 +89,7 @@ ControllerAnunces.crear = async (req,res)=>{
         }
     });
 
+
 }
 
 ControllerAnunces.actualizar=(req, res)=>{
@@ -102,7 +103,6 @@ ControllerAnunces.actualizar=(req, res)=>{
         } else {
             // También podemos devolver así la información:
             if(anunces.user == user) {
-
                 AnuncesWorks.findByIdAndUpdate(req.params.id, { $set: req.body }, function (err) {
                     if (err) {
                         //res.send(err);
