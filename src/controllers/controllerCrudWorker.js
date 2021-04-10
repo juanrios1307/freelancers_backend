@@ -13,26 +13,23 @@ ControllerWorker.obtener = (req, res) =>{
         Worker.findById(req.params.id, function (err, worker) {
             if (err) {
                 // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-                res.status(203).json({ status: "error", data: "No se ha encontrado el worker con id: "+req.params.id});
+                res.status(203).json({
+                    status: "error",
+                    data: "No se ha encontrado el anuncio con id: " + req.params.id
+                });
             } else {
                 // También podemos devolver así la información:
-                if(worker.user == user) {
+                if (worker.user == user) {
 
-                    Worker.findById(user, function (err, worker) {
-                        if (err) {
-                            // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-                            res.status(203).json({ status: "error", data: "No se ha encontrado el worker con id: "+req.params.id});
-                        } else {
-                            // También podemos devolver así la información:
-                            res.status(200).json({ status: "ok", data: worker });
-                        }
-                    })
-                }else{
-                    res.status(203).json({ status: "error", data: "El id no corresponde a tu peticion: "});
+                    // También podemos devolver así la información:
+                    res.status(200).json({status: "ok", data: worker});
+
+                } else {
+                    res.status(203).json({status: "error", data: "El id no corresponde a tu peticion: "});
                 }
 
             }
-        }).populate('user')
+        })
 
 
     }else{
