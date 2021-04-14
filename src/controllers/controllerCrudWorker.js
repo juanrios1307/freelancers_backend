@@ -33,30 +33,22 @@ ControllerWorker.obtener = (req, res) =>{
 
 
     }else{
-        User.findById(user, {"Workers":1 ,"_id":0},async function  (err, worker) {
-            if (err)
-                // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
-                return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
 
-            var workers=[]
+        Worker.find({user:user}, function (err, workers) {
+            if (err) {
+                // Devolvemos el código HTTP 404, de producto no encontrado por su id.
+                res.status(203).json({
+                    status: "error",
+                    data: "No se ha encontrado el anuncio "
+                });
+            } else {
 
-            const pubs=worker.Workers
+                // También podemos devolver así la información:
+                res.status(200).json({status: "ok", data: workers});
 
-            for(var i=0;i<pubs.length;i++){
-
-                await Worker.findById(pubs[i],function (err,work){
-                    if (err)
-                        // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
-                        return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
-
-                    // También podemos devolver así la información:
-                    workers.push(work)
-                }).populate('user')
             }
+        }).populate('user')
 
-            res.status(200).json({ status: "ok", data: workers});
-
-        })
     }
 
 }
