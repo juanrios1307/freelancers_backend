@@ -13,7 +13,8 @@ route.all('/', function(req, res, next) {
 });
 
 route.post('/',protectedRoutes.verifyToken,controlMemberShips.crearPago)
-route.get('/',protectedRoutes.verifyToken,controlMemberShips.obtenerPagos)
+route.get('/pays/',protectedRoutes.verifyToken,controlMemberShips.obtenerPagos)
+route.get('/',protectedRoutes.verifyToken,controlMemberShips.obtenerBeneficios)
 
 
 module.exports =route

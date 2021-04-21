@@ -101,4 +101,65 @@ ControllerMemberships.obtenerPagos =(req,res)=> {
 
 }
 
+ControllerMemberships.obtenerBeneficios = (req,res)=>{
+    const id=req.decoded.sub
+
+    User.findById(id, {"Membresias":1 ,"_id":0},async function  (err, memberships) {
+        if (err)
+            // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
+            return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
+
+        else{
+            const hoy=Date.now()
+
+            if(memberships.length >0 ) {
+
+                if (memberships[memberships.length - 1].fechaExpiracion >= hoy) {
+
+                    const tipo = memberships[memberships.length - 1].description
+
+                    var beneficios={}
+
+                    if(tipo=="gold"){
+                        beneficios={
+                            workers:20,
+                            anunces:10000,
+                            analitics:true,
+                            views:true,
+                            support:true
+                        }
+                    }else if(tipo=="silver"){
+                        beneficios={
+                            workers:50,
+                            anunces:20,
+                            analitics:true,
+                            views:false,
+                            support:true
+                        }
+
+                    }else if(tipo=="bronze"){
+                        beneficios={
+                            workers:2,
+                            anunces:10,
+                            analitics:false,
+                            views:false,
+                            support:true
+                        }
+                    }
+
+                    res.status(200).json({status: "ok", data: tipo, beneficios:beneficios});
+
+                }else{
+                    res.status(200).json({status: "ok", data: "Tu membresia Está Vencida, Renuevala Ahora para No perder tus beneficios"});
+                }
+
+            }else{
+                res.status(200).json({status: "ok", data: "No has comprado ninguna mebresia"});
+            }
+        }
+
+
+    })
+}
+
 module.exports=ControllerMemberships

@@ -27,30 +27,21 @@ ControllerAnunces.obtener = (req,res)=>{
             }
         })
     }else{
-        User.findById(user, {"Anunces":1 ,"_id":0},async function  (err, anunce) {
-            if (err)
-                // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
-                return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
+        AnuncesWorks.find({user:user}, function (err, anunces) {
+            if (err) {
+                // Devolvemos el código HTTP 404, de producto no encontrado por su id.
+                res.status(203).json({
+                    status: "error",
+                    data: "No se ha encontrado el anuncio "
+                });
+            } else {
 
-            var anuncios=[]
+                // También podemos devolver así la información:
+                res.status(200).json({status: "ok", data: anunces});
 
-            const pubs=anunce.Anunces
-
-            for(var i=0;i<pubs.length;i++){
-
-                await AnuncesWorks.findById(pubs[i],function (err,anunces){
-                    if (err)
-                        // Si se ha producido un error, salimos de la función devolviendo  código http 422 (Unprocessable Entity).
-                        return (res.type('json').status(203).send({ status: "error", data: "No se puede procesar la entidad, datos incorrectos!" }));
-
-                    // También podemos devolver así la información:
-                    anuncios.push(anunces)
-                }).populate('user')
             }
+        }).populate('user')
 
-            res.status(200).json({ status: "ok", data: anuncios});
-
-        })
     }
 
 }
@@ -125,30 +116,43 @@ ControllerAnunces.actualizar=(req, res)=>{
 ControllerAnunces.eliminar=(req, res)=>{
 
     const user=req.decoded.sub
+    const anuncio=req.params.id
 
-    AnuncesWorks.findById(req.params.id, function (err, anunces) {
+    AnuncesWorks.findById(anuncio, function (err, products) {
         if (err) {
-            // Devolvemos el código HTTP 404, de producto no encontrado por su id.
+            // Devolvemos el código HTTP 404, de anuncio no encontrado por su id.
             res.status(404).json({ status: "error", data: "No se ha encontrado el anuncio con id: "+req.params.id});
         } else {
             // También podemos devolver así la información:
-            if(anunces.user == user) {
+            if(products.user == user) {
 
-                AnuncesWorks.findByIdAndRemove(req.params.id, function(err, data) {
+                AnuncesWorks.findByIdAndRemove(anuncio, function(err, data) {
                     if (err || !data) {
                         //res.send(err);
-                        // Devolvemos el código HTTP 404, de producto no encontrado por su id.
-                        res.status(203).json({ status: "error", data: "No se ha encontrado el anuncio con id: "+req.params.id});
+                        // Devolvemos el código HTTP 404, de anuncio no encontrado por su id.
+                        res.status(404).json({ status: "error", data: "No se ha encontrado el anuncio con id: "+req.params.id});
                     }
                     else
                     {
-                        res.status(200).json({ status: "ok", data: "Anuncio eliminado"});
+                        User.findByIdAndUpdate(user,  {  $pull : { Anunces : anuncio }}, function (err) {
+                            if (err) {
+                                // Devolvemos el código HTTP 404, de usuario no encontrado por su id.
+                                res.status(203).json({ status: "error", data: "No se ha encontrado el usuario con id: "+user});
+                            } else {
+
+
+                                // Devolvemos el código HTTP 200.
+                                res.status(200).json({ status: "ok", data: "Producto eliminado satisfactoriamente" });
+
+                            }
+                        });
+
 
                     }
                 });
 
             }else{
-                res.status(203).json({ status: "error", data: "El id no corresponde a tu peticion: "});
+                res.status(404).json({ status: "error", data: "El id no corresponde a tu peticion: "});
             }
 
         }

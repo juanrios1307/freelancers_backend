@@ -13,7 +13,7 @@ ControllerLogin.authenticate= async (req,res)=> {
 
     if (user && bcrypt.compareSync(pwd, user.pwd)) {
         const token = jwt.sign({sub: user.id}, config.secret,
-            {expiresIn: 86400});
+            {expiresIn: 8640000});
 
         res.status(200).json({
             token:token ,
