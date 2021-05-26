@@ -16,8 +16,6 @@ app.use(bodyparser.urlencoded({extend:true}))
 app.use(bodyparser.json())
 app.use(cors({origin:true}))
 
-//app.use(jwt);
-//app.use(errorHandler);
 
 //Declaracion de rutas para manejo de api
 app.use('/api/anunceswork',require('./routes/routerAnuncesWork'))
